@@ -1696,12 +1696,8 @@ MonoBehaviour:
   breakingProgress: 0
   breakThreshold: 100
   unlockThreshold: 100
-  percentageTurn: 0
-  screenPosition: {x: 0, y: 0, z: 0}
-  centreOfScreen: 0
-  isPicking: 0
-  WinText: {fileID: 290706662}
-  LostText: {fileID: 81570682}
+  WinText: {fileID: 0}
+  LostText: {fileID: 0}
 --- !u!1 &1642188971
 GameObject:
   m_ObjectHideFlags: 0

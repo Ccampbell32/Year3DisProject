@@ -56,5 +56,11 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Year3DisProject.sln"
+    "dotnet.defaultSolution": "Year3DisProject.sln",
+    "cSpell.words": [
+        "Behaviour",
+        "Lerp",
+        "Lockpicking",
+        "Mathf"
+    ]
 }

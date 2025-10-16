@@ -1690,14 +1690,14 @@ MonoBehaviour:
   currentAngle: 1
   percentLeftToGreen: 0
   percentRightToGreen: 0
-  FullIndicatorDistance: 30
-  UnlockIndicatorDistance: 10
+  FullIndicatorDistance: 20
+  UnlockIndicatorDistance: 5
   unlockProgress: 0
   breakingProgress: 0
   breakThreshold: 100
   unlockThreshold: 100
-  WinText: {fileID: 0}
-  LostText: {fileID: 0}
+  WinText: {fileID: 290706662}
+  LostText: {fileID: 81570682}
 --- !u!1 &1642188971
 GameObject:
   m_ObjectHideFlags: 0

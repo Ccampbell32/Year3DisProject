@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
 
     [Header("Visualization")]
     public bool showGizmos = true;
-    public Color gridColor = Color.green;
+    public Color gridColor = Color.grey;
 
     // Store world positions of each cell
     private Vector3[,] gridPositions;

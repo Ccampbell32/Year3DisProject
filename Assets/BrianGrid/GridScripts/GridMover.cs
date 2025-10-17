@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
@@ -93,7 +93,6 @@ public class GridMover : MonoBehaviour
         if (movesUsed < movesPerTurn)
         {
             HighlightReachableTiles();
-            if()
         }
 
         else

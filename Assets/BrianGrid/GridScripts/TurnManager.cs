@@ -6,11 +6,12 @@ public class TurnManager : MonoBehaviour
     public GridMover player;
     public GridMover enemy;
 
-    private enum Turn { Player, Enemy }
+    [SerializeField] private enum Turn { Player, Enemy }
     private Turn currentTurn = Turn.Player;
 
     void Start()
     {
+        currentTurn = Turn.Player;
         StartPlayerTurn();
     }
 

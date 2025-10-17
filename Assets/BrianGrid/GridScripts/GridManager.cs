@@ -17,11 +17,6 @@ public class GridManager : MonoBehaviour
     // Store world positions of each cell
     private Vector3[,] gridPositions;
 
-
-
-
-
-
     void Awake()
     {
         GenerateGrid();
@@ -48,10 +43,17 @@ public class GridManager : MonoBehaviour
 
                     // ✅ Add this part: assign TileSelector and grid coordinates
                     TileSelector selector = tile.GetComponent<TileSelector>();
+
                     if (selector == null)
                         selector = tile.AddComponent<TileSelector>();
 
                     selector.gridPosition = new Vector2Int(x, y);
+
+                    //If grid is next to keyitem, it will be interactive
+                    if (x == 4 && y == 4)
+                    {
+                        tile.AddComponent<InteractiveTile>();
+                    }
                 }
             }
         }

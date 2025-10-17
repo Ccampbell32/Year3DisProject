@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class GridMover : MonoBehaviour
 {
@@ -90,7 +91,11 @@ public class GridMover : MonoBehaviour
 
         // End of move: clear and re-highlight for next move if still in turn
         if (movesUsed < movesPerTurn)
+        {
             HighlightReachableTiles();
+            if()
+        }
+
         else
             ClearHighlights();
     }
@@ -127,7 +132,10 @@ public class GridMover : MonoBehaviour
     {
         foreach (TileSelector tile in FindObjectsOfType<TileSelector>())
         {
-            tile.ResetColor();
+            if (tile.GetComponent<InteractiveTile>() == null) // Don't reset interactive tiles
+            {
+                tile.ResetColor();
+            }
         }
     }
 

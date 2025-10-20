@@ -15,8 +15,18 @@ public class TileSelector : MonoBehaviour
 
     public void Highlight(Color color)
     {
-        if (rend != null)
-            rend.material.color = color;
+        if (rend == null)
+            return;
+
+        else if (rend.material.color == Color.magenta)
+        {
+            Debug.Log("This is interactive so no color");
+            rend.material.color = Color.magenta;
+        }
+
+        else if (rend != null)
+            rend.material.color = color;      
+
     }
 
     public void ResetColor()

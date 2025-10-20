@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -58,6 +58,7 @@ public class GridManager : MonoBehaviour
                         if(intGridPos.x == x && intGridPos.y == y)
                         {
                             tile.AddComponent<InteractiveTile>();
+                            Debug.Log("one just");
                         }
                     }
                 }
@@ -65,6 +66,10 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public List<Vector2> GetInteractiveTilesList()
+    {
+        return InteractiveTilesList; 
+    }
 
     public Vector3 GetWorldPosition(int x, int y)
     {

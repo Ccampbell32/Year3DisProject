@@ -6,7 +6,7 @@ public class InteractiveTile : MonoBehaviour
     //makes tiles interactive
     [SerializeField] private Renderer rend;
 
-    [SerializeField] private GameObject interactievePrompt;
+    [SerializeField] private GameObject interactieveIcon;
     [SerializeField] private string interactiveObjName = "PuzzleInteraction";
     [SerializeField] private Collider tileCollider;
     [SerializeField] private GameObject player;
@@ -14,14 +14,6 @@ public class InteractiveTile : MonoBehaviour
 
     void Start()
     {
-        if (interactievePrompt == null && !string.IsNullOrEmpty(interactiveObjName))
-        {
-            interactievePrompt = GameObject.Find(interactiveObjName);
-        }
-        if (interactievePrompt != null)
-        {
-            interactievePrompt.SetActive(false);
-        }
 
         if (tileCollider == null)
         {
@@ -43,25 +35,6 @@ public class InteractiveTile : MonoBehaviour
         if (tile != null)
         {
             tile.Highlight(interactiveColor);
-        }
-    }
-
-    public void AllowInteraction()
-    {
-        //if the player is on the tile, allow interaction
-        if (interactievePrompt != null)
-        {
-            Debug.Log("Player on interactive tile, showing prompt");
-            interactievePrompt.SetActive(true);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("This was triggered by: " + other.name);
-        if (other.CompareTag("Player"))
-        {
-            AllowInteraction();
         }
     }
 }

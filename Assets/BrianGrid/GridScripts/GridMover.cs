@@ -15,6 +15,12 @@ public class GridMover : MonoBehaviour
     private bool isMoving = false;
     private int movesUsed = 0;
 
+    private int distance;
+
+    private List<Vector2> interactbleTiles;
+
+    [SerializeField] private GameObject interactiveIcon;
+
     // --- Added for TurnManager communication ---
     public Vector2Int CurrentGridPos => currentGridPos;  // lets other scripts read the current position
 
@@ -26,12 +32,15 @@ public class GridMover : MonoBehaviour
 
     void Start()
     {
+        interactiveIcon.SetActive(false);
+
         if (gridManager == null)
             gridManager = FindObjectOfType<GridManager>();
 
         currentGridPos = startGridPos;
         transform.position = gridManager.GetWorldPosition(currentGridPos.x, currentGridPos.y);
 
+        interactbleTiles = gridManager.GetInteractiveTilesList();
 
         HighlightReachableTiles();
     }
@@ -47,6 +56,7 @@ public class GridMover : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 TileSelector tile = hit.collider.GetComponent<TileSelector>();
+
                 if (tile != null && tile.isReachable)
                 {
                     TryMoveTo(tile.gridPosition);
@@ -69,6 +79,16 @@ public class GridMover : MonoBehaviour
         }
     }
 
+    private void CheckForInteractive(Vector2Int currentGridPos)
+    {
+        foreach (Vector2 interactiveGridPos in interactbleTiles)
+        {
+            if(currentGridPos == interactiveGridPos)
+            {
+                interactiveIcon.SetActive(true); 
+            }
+        }
+    }
     IEnumerator MoveAlongGrid(Vector2Int target)
     {
         isMoving = true;
@@ -87,6 +107,8 @@ public class GridMover : MonoBehaviour
         }
 
         movesUsed++;
+        CheckForInteractive(currentGridPos);
+
         isMoving = false;
 
         // End of move: clear and re-highlight for next move if still in turn
@@ -114,10 +136,13 @@ public class GridMover : MonoBehaviour
     void HighlightReachableTiles()
     {
         ClearHighlights();
-
         foreach (TileSelector tile in FindObjectsOfType<TileSelector>())
         {
-            int distance = Mathf.Abs(tile.gridPosition.x - currentGridPos.x) + Mathf.Abs(tile.gridPosition.y - currentGridPos.y);
+            if (tile)
+            {
+                distance = Mathf.Abs(tile.gridPosition.x - currentGridPos.x) + Mathf.Abs(tile.gridPosition.y - currentGridPos.y);
+            }
+
             if (distance <= maxMoveDistance)
             {
                 tile.Highlight(Color.cyan);

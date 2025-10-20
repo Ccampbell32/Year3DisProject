@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GridManager : MonoBehaviour
     [Header("Visualization")]
     public bool showGizmos = true;
     public Color gridColor = Color.grey;
+
+    [Header("Matts amazing stuff")]
+    [SerializeField] private List<Vector2> InteractiveTilesList = new List<Vector2>(); 
 
     // Store world positions of each cell
     private Vector3[,] gridPositions;
@@ -49,10 +53,12 @@ public class GridManager : MonoBehaviour
 
                     selector.gridPosition = new Vector2Int(x, y);
 
-                    //If grid is next to keyitem, it will be interactive
-                    if (x == 4 && y == 4)
+                    foreach (Vector2 intGridPos in InteractiveTilesList)
                     {
-                        tile.AddComponent<InteractiveTile>();
+                        if(intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tile.AddComponent<InteractiveTile>();
+                        }
                     }
                 }
             }

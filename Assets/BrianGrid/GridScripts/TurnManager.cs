@@ -27,14 +27,14 @@ public class TurnManager : MonoBehaviour
     // --- PLAYER TURN ---
     void StartPlayerTurn()
     {
-        Debug.Log("▶️ Player Turn Start");
+        //Debug.Log("▶️ Player Turn Start");
         currentTurn = Turn.Player;
         player.StartNewTurn();
     }
 
     public void EndPlayerTurn()
     {
-        Debug.Log("⏹️ Player Turn End");
+        //Debug.Log("⏹️ Player Turn End");
         player.ClearHighlights(); // make sure grid resets
         StartCoroutine(StartEnemyTurnAfterDelay());
     }
@@ -48,7 +48,7 @@ public class TurnManager : MonoBehaviour
     // --- ENEMY TURN ---
     void StartEnemyTurn()
     {
-        Debug.Log("🔴 Enemy Turn Start");
+        //Debug.Log("🔴 Enemy Turn Start");
         currentTurn = Turn.Enemy;
         enemy.StartNewTurn();
 

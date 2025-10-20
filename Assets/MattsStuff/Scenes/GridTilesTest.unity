@@ -292,6 +292,8 @@ MonoBehaviour:
   tilePrefab: {fileID: 3380011434841828342, guid: a5e46c124ba64c4478483b4a31b8891b, type: 3}
   showGizmos: 1
   gridColor: {r: 0, g: 1, b: 0, a: 1}
+  InteractiveTilesList:
+  - {x: 4, y: 4}
 --- !u!4 &997777502
 Transform:
   m_ObjectHideFlags: 0
@@ -565,7 +567,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

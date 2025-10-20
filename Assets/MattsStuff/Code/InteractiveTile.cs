@@ -5,9 +5,6 @@ public class InteractiveTile : MonoBehaviour
 {
     //makes tiles interactive
     [SerializeField] private Renderer rend;
-
-    [SerializeField] private GameObject interactieveIcon;
-    [SerializeField] private string interactiveObjName = "PuzzleInteraction";
     [SerializeField] private Collider tileCollider;
     [SerializeField] private GameObject player;
     private Color interactiveColor = Color.magenta;

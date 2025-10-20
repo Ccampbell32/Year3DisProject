@@ -75,7 +75,7 @@ public class GridMover : MonoBehaviour
         }
         else
         {
-            Debug.Log("That tile is too far!");
+            //Debug.Log("That tile is too far!");
         }
     }
 
@@ -148,6 +148,7 @@ public class GridMover : MonoBehaviour
                 tile.Highlight(Color.cyan);
                 tile.isReachable = true;
             }
+
         }
     }
 

@@ -16,16 +16,27 @@ public class GridManager : MonoBehaviour
     public Color gridColor = Color.grey;
 
     [Header("Matts amazing stuff")]
-    [SerializeField] private List<Vector2> InteractiveTilesList = new List<Vector2>(); 
+    [SerializeField] public List<Vector2> SearcjableTilesList = new List<Vector2>();
+    [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
+    [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
+    
 
     // Store world positions of each cell
     private Vector3[,] gridPositions;
 
     void Awake()
     {
+        CollectLists();
         GenerateGrid();
     }
 
+    public void CollectLists()
+    {
+        AllInteractableTiles.AddRange(SearcjableTilesList);
+        AllInteractableTiles.AddRange(Puzzletiles);
+        AllInteractableTiles.AddRange(WeaponTile);
+    }
     void GenerateGrid()
     {
         gridPositions = new Vector3[width, height];
@@ -53,14 +64,31 @@ public class GridManager : MonoBehaviour
 
                     selector.gridPosition = new Vector2Int(x, y);
 
-                    foreach (Vector2 intGridPos in InteractiveTilesList)
+                    foreach (Vector2 intGridPos in Puzzletiles)
                     {
-                        if(intGridPos.x == x && intGridPos.y == y)
+                        if (intGridPos.x == x && intGridPos.y == y)
                         {
-                            tile.AddComponent<InteractiveTile>();
-                            Debug.Log("one just");
+                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
                         }
                     }
+
+                    foreach (Vector2 intGridPos in SearcjableTilesList)
+                    {
+                        if (intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
+                        }
+                    }
+
+                    foreach (Vector2 intGridPos in WeaponTile)
+                    {
+                        if (intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
+
+                        }
+                    }
+                    
                 }
             }
         }
@@ -68,7 +96,7 @@ public class GridManager : MonoBehaviour
 
     public List<Vector2> GetInteractiveTilesList()
     {
-        return InteractiveTilesList; 
+        return AllInteractableTiles; 
     }
 
     public Vector3 GetWorldPosition(int x, int y)

@@ -19,7 +19,10 @@ public class GridMover : MonoBehaviour
 
     private List<Vector2> interactbleTiles;
 
-    [SerializeField] private GameObject interactiveIcon;
+    [SerializeField] private GameObject puzzleIcon;
+    [SerializeField] private GameObject searchableIcon;
+    [SerializeField] private GameObject weaponIcon;
+
 
     // --- Added for TurnManager communication ---
     public Vector2Int CurrentGridPos => currentGridPos;  // lets other scripts read the current position
@@ -32,7 +35,10 @@ public class GridMover : MonoBehaviour
 
     void Start()
     {
-        interactiveIcon.SetActive(false);
+
+        puzzleIcon.SetActive(false);
+        searchableIcon.SetActive(false);
+        weaponIcon.SetActive(false);
 
         if (gridManager == null)
             gridManager = FindObjectOfType<GridManager>();
@@ -81,14 +87,31 @@ public class GridMover : MonoBehaviour
 
     private void CheckForInteractive(Vector2Int currentGridPos)
     {
-        foreach (Vector2 interactiveGridPos in interactbleTiles)
+        foreach (Vector2 interactiveGridPos in gridManager.Puzzletiles)
         {
-            if(currentGridPos == interactiveGridPos)
+            if (currentGridPos == interactiveGridPos)
             {
-                interactiveIcon.SetActive(true); 
+                puzzleIcon.SetActive(true);
+            }
+        }
+
+        foreach (Vector2 interactiveGridPos in gridManager.SearcjableTilesList)
+        {
+            if (currentGridPos == interactiveGridPos)
+            {
+                searchableIcon.SetActive(true);
+            }
+        }
+
+        foreach (Vector2 interactiveGridPos in gridManager.WeaponTile)
+        {
+            if (currentGridPos == interactiveGridPos)
+            {
+                weaponIcon.SetActive(true);
             }
         }
     }
+    
     IEnumerator MoveAlongGrid(Vector2Int target)
     {
         isMoving = true;

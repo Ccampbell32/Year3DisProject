@@ -7,6 +7,15 @@ public class InteractiveTile : MonoBehaviour
     [SerializeField] private Renderer rend;
     [SerializeField] private Collider tileCollider;
     [SerializeField] private GameObject player;
+
+    public enum TileType
+    {
+        Puzzle,
+        Searchable,
+        Weapon,
+    }
+
+    [SerializeField] public TileType tileType;
     private Color interactiveColor = Color.magenta;
 
     void Start()
@@ -15,7 +24,7 @@ public class InteractiveTile : MonoBehaviour
         if (tileCollider == null)
         {
             tileCollider = GetComponent<Collider>();
-            tileCollider.isTrigger = true;
+            //tileCollider.isTrigger = true;
         }
 
         if (player == null)
@@ -27,7 +36,7 @@ public class InteractiveTile : MonoBehaviour
         {
             rend = GetComponent<Renderer>();
         }
-        
+
         TileSelector tile = GetComponent<TileSelector>();
         if (tile != null)
         {

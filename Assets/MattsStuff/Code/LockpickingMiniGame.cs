@@ -7,13 +7,20 @@ public class LockpickingMiniGame : MonoBehaviour
 {
 
 
-    [SerializeField] private GameObject pick;
+    [Header("Objects")]
+    [SerializeField] private GameObject centreOfPick;
+    [SerializeField] private GameObject LockpickMiniGame;
+    [Header ("Canvas")]
     [SerializeField] private Image progressBar;
     [SerializeField] private Image breakBar;
+    [SerializeField] private GameObject WinText;
+    [SerializeField] private GameObject LostText ;
+    [Header ("Debug Angles")]
     [SerializeField][Range(-90, 90)] private float greenSpotAngle;
     [SerializeField][Range(-90, 90)] private float currentAngle;
     [SerializeField]private float percentLeftToGreen;
-    [SerializeField]private float percentRightToGreen;
+    [SerializeField] private float percentRightToGreen;
+    [Header ("Limits and Distances")]
     [SerializeField][Range(20, 40)] private float FullIndicatorDistance;
     [SerializeField] private float UnlockIndicatorDistance;
 
@@ -28,10 +35,6 @@ public class LockpickingMiniGame : MonoBehaviour
     private float centreOfScreen;
 
     private bool isPicking;
-
-    [SerializeField] private GameObject WinText;
-    [SerializeField] private GameObject LostText ;
-
 
     private void Start()
     {
@@ -82,7 +85,7 @@ public class LockpickingMiniGame : MonoBehaviour
 
             }
 
-            pick.transform.rotation = Quaternion.Euler( pick.transform.rotation.eulerAngles.x,  pick.transform.rotation.eulerAngles.y, currentAngle);
+            centreOfPick.transform.rotation = Quaternion.Euler( centreOfPick.transform.rotation.eulerAngles.x, centreOfPick.transform.rotation.eulerAngles.y,  currentAngle);
             //Debug.Log(currentAngle);
             #endregion
         }

@@ -9,7 +9,6 @@ public class LockpickingMiniGame : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private GameObject centreOfPick;
-    [SerializeField] private GameObject LockpickMiniGame;
     [Header ("Canvas")]
     [SerializeField] private Image progressBar;
     [SerializeField] private Image breakBar;
@@ -36,6 +35,10 @@ public class LockpickingMiniGame : MonoBehaviour
 
     private bool isPicking;
 
+    public delegate void FreezeHandler();
+    public static event FreezeHandler freezeGridMove;
+    public static event FreezeHandler unfreezeGridMoves;
+
     private void Start()
     {
         progressBar.fillAmount = 0f;
@@ -51,7 +54,11 @@ public class LockpickingMiniGame : MonoBehaviour
         WinText.SetActive(false);
         LostText.SetActive(false);
     }
-    
+
+    private void OnEnable()
+    {
+        freezeGridMove();
+    }
     private void FixedUpdate()
     {
         #region  Rotation with mouse input
@@ -96,8 +103,9 @@ public class LockpickingMiniGame : MonoBehaviour
 
         if (breakingProgress >= breakThreshold)
         {
-            Debug.Log("Broke");
-           LostText.SetActive(true);       
+            //Debug.Log("Broke");
+            LostText.SetActive(true);
+            unfreezeGridMoves();    
         }
 
         else if (isPicking && currentAngle >= greenSpotAngle - FullIndicatorDistance && currentAngle <= greenSpotAngle + FullIndicatorDistance)
@@ -147,7 +155,7 @@ public class LockpickingMiniGame : MonoBehaviour
             if (unlockProgress >= unlockThreshold)
             {
                 WinText.SetActive(true);
-                //Debug.Log("Puzzle Complete");
+                unfreezeGridMoves();
             }
         }
 

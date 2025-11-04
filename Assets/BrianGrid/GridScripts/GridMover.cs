@@ -27,6 +27,21 @@ public class GridMover : MonoBehaviour
     // --- Added for TurnManager communication ---
     public Vector2Int CurrentGridPos => currentGridPos;  // lets other scripts read the current position
 
+    [Header("Matt's amazing stuff")]
+    [SerializeField] private bool isFreeze;
+
+    public void FreezeGridMoves()
+    {
+        isFreeze = true;
+        Debug.Log("freeze");
+    }
+
+    public void UnfreezeGridMoves()
+    {
+        isFreeze = false;
+        Debug.Log("unfreeze");
+    }
+    
     public void ClearHighlights()
     {
         ClearHighlightsInternal();  // helper method we'll define below
@@ -49,10 +64,14 @@ public class GridMover : MonoBehaviour
         interactbleTiles = gridManager.GetInteractiveTilesList();
 
         HighlightReachableTiles();
+
+        LockpickingMiniGame.freezeGridMove += FreezeGridMoves;
+        LockpickingMiniGame.unfreezeGridMoves += UnfreezeGridMoves;         
     }
 
     void Update()
     {
+        if (isFreeze) return;
         if (isMoving) return;
         if (movesUsed >= movesPerTurn) return; // no moves left this turn
 

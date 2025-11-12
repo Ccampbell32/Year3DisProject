@@ -3,12 +3,27 @@ guid: 807adb5bc3b3be34d8d788b5f1b0143f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FarmDirt.001
+    second: {fileID: 2100000, guid: e6c9ccca7ee33644c8049477835e97c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalSheets
+    second: {fileID: 2100000, guid: 2f96a62e2babc544dab1ed3781848958, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stonewall
+    second: {fileID: 2100000, guid: f8ff53c84f258a3498e7eeba0e771994, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

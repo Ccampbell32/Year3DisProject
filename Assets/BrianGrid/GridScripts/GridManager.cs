@@ -1,46 +1,30 @@
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
     [Header("Grid Settings")]
-    public int width = 10;           // Number of columns
-    public int height = 10;          // Number of rows
-    public float cellSize = 1f;      // Distance between cells
+    public int width = 10;
+    public int height = 10;
+    public float cellSize = 1f;
 
-    [Header("Tile Settings")]
-    public GameObject tilePrefab;    // The prefab to spawn on each grid cell
+    [Header("Tile Prefabs")]
+    public GameObject normalTilePrefab;
+    public GameObject mudTilePrefab;
+    public GameObject wallTilePrefab;
 
-    [Header("Visualization")]
-    public bool showGizmos = true;
-    public Color gridColor = Color.grey;
+    [HideInInspector] public TileSelector[,] tiles;
 
-    [Header("Matts amazing stuff")]
-    [SerializeField] public List<Vector2> SearcjableTilesList = new List<Vector2>();
-    [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
-    [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
-    [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
-    
+    [Header("References")]
+    public GridMover playerMover;
 
-    // Store world positions of each cell
-    private Vector3[,] gridPositions;
-
-    void Awake()
+    private void Awake()
     {
-        CollectLists();
         GenerateGrid();
     }
 
-    public void CollectLists()
+    private void GenerateGrid()
     {
-        AllInteractableTiles.AddRange(SearcjableTilesList);
-        AllInteractableTiles.AddRange(Puzzletiles);
-        AllInteractableTiles.AddRange(WeaponTile);
-    }
-    void GenerateGrid()
-    {
-        gridPositions = new Vector3[width, height];
-
+        tiles = new TileSelector[width, height];
         Vector3 startPos = transform.position;
 
         for (int x = 0; x < width; x++)
@@ -48,79 +32,88 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 Vector3 worldPos = startPos + new Vector3(x * cellSize, 0, y * cellSize);
-                gridPositions[x, y] = worldPos;
+                GameObject tileObj = Instantiate(normalTilePrefab, worldPos, Quaternion.identity, transform);
+                tileObj.name = $"Tile_{x}_{y}";
 
-                if (tilePrefab != null)
+                TileSelector selector = tileObj.GetComponent<TileSelector>();
+                if (selector == null)
+                    selector = tileObj.AddComponent<TileSelector>();
+
+                selector.Init(this, x, y, true, 1);
+                tiles[x, y] = selector;
+            }
+        }
+    }
+
+    public Vector3 GetWorldPosition(int x, int y)
+    {
+        return transform.position + new Vector3(x * cellSize, 0, y * cellSize);
+    }
+
+    public Vector2Int GetClosestGridPosition(Vector3 worldPosition)
+    {
+        int x = Mathf.RoundToInt((worldPosition.x - transform.position.x) / cellSize);
+        int y = Mathf.RoundToInt((worldPosition.z - transform.position.z) / cellSize);
+        return new Vector2Int(Mathf.Clamp(x, 0, width - 1), Mathf.Clamp(y, 0, height - 1));
+    }
+
+    public bool IsValidTile(int x, int y)
+    {
+        return x >= 0 && y >= 0 && x < width && y < height && tiles[x, y] != null && tiles[x, y].isWalkable;
+    }
+
+    public void OnTileClicked(int x, int y)
+    {
+        if (playerMover == null)
+            return;
+
+        if (!IsValidTile(x, y))
+            return;
+
+        playerMover.MoveToTile(x, y);
+    }
+
+    public void HighlightRange(Vector2Int center, int range)
+    {
+        ClearHighlights();
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                int distance = Mathf.Abs(x - center.x) + Mathf.Abs(y - center.y);
+                if (distance <= range)
                 {
-                    // Instantiate tile
-                    GameObject tile = Instantiate(tilePrefab, worldPos, Quaternion.identity, transform);
-                    tile.name = $"Tile_{x}_{y}";
-
-                    // ✅ Add this part: assign TileSelector and grid coordinates
-                    TileSelector selector = tile.GetComponent<TileSelector>();
-
-                    if (selector == null)
-                        selector = tile.AddComponent<TileSelector>();
-
-                    selector.gridPosition = new Vector2Int(x, y);
-
-                    foreach (Vector2 intGridPos in Puzzletiles)
+                    if (tiles[x, y] != null)
                     {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
-                        }
+                        if (tiles[x, y].isWalkable)
+                            tiles[x, y].Highlight(Color.cyan);
+                        else
+                            tiles[x, y].Highlight(Color.red);
                     }
-
-                    foreach (Vector2 intGridPos in SearcjableTilesList)
-                    {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
-                        }
-                    }
-
-                    foreach (Vector2 intGridPos in WeaponTile)
-                    {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tile.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
-
-                        }
-                    }
-                    
                 }
             }
         }
     }
 
-    public List<Vector2> GetInteractiveTilesList()
+    public void ClearHighlights()
     {
-        return AllInteractableTiles; 
-    }
-
-    public Vector3 GetWorldPosition(int x, int y)
-    {
-        if (x < 0 || x >= width || y < 0 || y >= height)
-            return Vector3.zero;
-
-        return gridPositions[x, y];
-    }
-
-    // Optional visual debug
-    void OnDrawGizmos()
-    {
-        if (!showGizmos) return;
-
-        Gizmos.color = gridColor;
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                Vector3 pos = transform.position + new Vector3(x * cellSize, 0, y * cellSize);
-                Gizmos.DrawWireCube(pos, new Vector3(cellSize, 0.1f, cellSize));
+                if (tiles[x, y] != null)
+                    tiles[x, y].ResetColor();
             }
         }
     }
-}
 
+    public void OnPlayerArrivedAtTile(Vector2Int pos)
+    {
+        HighlightRange(pos, 3); // Example: highlight around player
+    }
+
+    public void SetPlayerPosition(Vector2Int pos)
+    {
+        HighlightRange(pos, 3);
+    }
+}

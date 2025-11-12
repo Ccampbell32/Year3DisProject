@@ -1,39 +1,46 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class TileSelector : MonoBehaviour
 {
-    public Vector2Int gridPosition;   // Tile's (x,y) on grid
     private Renderer rend;
     private Color baseColor;
-    public bool isReachable = false;
+    private GridManager gridManager;
 
-    void Start()
+    [HideInInspector] public int x, y;
+    [HideInInspector] public bool isWalkable = true;
+    [HideInInspector] public int moveCost = 1;
+
+    private void Awake()
     {
         rend = GetComponent<Renderer>();
         baseColor = rend.material.color;
     }
 
+    public void Init(GridManager manager, int gridX, int gridY, bool walkable, int cost)
+    {
+        gridManager = manager;
+        x = gridX;
+        y = gridY;
+        isWalkable = walkable;
+        moveCost = cost;
+    }
+
+    private void OnMouseDown()
+    {
+        if (gridManager == null) return;
+        gridManager.OnTileClicked(x, y);
+    }
+
     public void Highlight(Color color)
     {
-        if (rend == null)
-            return;
-
-        else if (rend.material.color == Color.magenta)
-        {
-            Debug.Log("This is interactive so no color");
-            rend.material.color = Color.magenta;
-        }
-
-        else if (rend != null)
-            rend.material.color = color;      
-
+        if (rend != null)
+            rend.material.color = color;
     }
 
     public void ResetColor()
     {
         if (rend != null)
             rend.material.color = baseColor;
-
-        isReachable = false;
     }
 }

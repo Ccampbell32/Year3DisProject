@@ -948,8 +948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98493a7f0173f0f4f8ad0504c9e8b6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1939713335}
-  enemy: {fileID: 1953036195}
 --- !u!4 &627067251
 Transform:
   m_ObjectHideFlags: 0
@@ -1222,7 +1220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 997777502}
-  - component: {fileID: 997777501}
+  - component: {fileID: 997777503}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -1230,31 +1228,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &997777501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997777500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6146b340fdb5e2c4e808f7317e9858ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 10
-  height: 10
-  cellSize: 1
-  tilePrefab: {fileID: 3380011434841828342, guid: a5e46c124ba64c4478483b4a31b8891b, type: 3}
-  showGizmos: 1
-  gridColor: {r: 0, g: 1, b: 0, a: 1}
-  SearcjableTilesList:
-  - {x: 5, y: 6}
-  WeaponTile:
-  - {x: 3, y: 4}
-  Puzzletiles:
-  - {x: 1, y: 1}
-  AllInteractableTiles: []
 --- !u!4 &997777502
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,6 +1243,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997777503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997777500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001da8c850d2ae3459d730c71e1922b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 10
+  cellSize: 1
+  normalTilePrefab: {fileID: 3380011434841828342, guid: 9ad86f6444117ab439a06fb97957110e, type: 3}
+  mudTilePrefab: {fileID: 1032404514726495432, guid: c87616fea20c65045b0254a644b31af4, type: 3}
+  wallTilePrefab: {fileID: 1875356769243329138, guid: 13f726f182249da40b59b520963b8946, type: 3}
+  playerMover: {fileID: 0}
 --- !u!43 &1071332245
 Mesh:
   m_ObjectHideFlags: 0
@@ -2165,7 +2157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfPick: {fileID: 1098626531}
-  LockpickMiniGame: {fileID: 859769239}
   progressBar: {fileID: 669693486}
   breakBar: {fileID: 496244221}
   WinText: {fileID: 290706662}
@@ -2751,14 +2742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85858956e8dc37f4a893924d5d0aa633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 997777501}
-  moveSpeed: 3
-  maxMoveDistance: 3
-  movesPerTurn: 1
-  startGridPos: {x: 0, y: 0}
-  puzzleIcon: {fileID: 1608621508}
-  searchableIcon: {fileID: 1567900764}
-  weaponIcon: {fileID: 1429700988}
 --- !u!65 &1939713336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2901,14 +2884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85858956e8dc37f4a893924d5d0aa633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 997777501}
-  moveSpeed: 3
-  maxMoveDistance: 2
-  movesPerTurn: 1
-  startGridPos: {x: 9, y: 9}
-  puzzleIcon: {fileID: 0}
-  searchableIcon: {fileID: 0}
-  weaponIcon: {fileID: 0}
 --- !u!65 &1953036196
 BoxCollider:
   m_ObjectHideFlags: 0

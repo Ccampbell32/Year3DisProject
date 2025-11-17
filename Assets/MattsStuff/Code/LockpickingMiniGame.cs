@@ -38,8 +38,9 @@ public class LockpickingMiniGame : MonoBehaviour
     public delegate void FreezeHandler();
     public static event FreezeHandler freezeGridMove;
     public static event FreezeHandler unfreezeGridMoves;
+    public static event FreezeHandler LockPickWin;
 
-    private void Start()
+    private void Awake()
     {
         progressBar.fillAmount = 0f;
         breakBar.fillAmount = 0f;
@@ -105,7 +106,8 @@ public class LockpickingMiniGame : MonoBehaviour
         {
             //Debug.Log("Broke");
             LostText.SetActive(true);
-            unfreezeGridMoves();    
+            unfreezeGridMoves();   
+            Invoke("FinishGame", 4f);
         }
 
         else if (isPicking && currentAngle >= greenSpotAngle - FullIndicatorDistance && currentAngle <= greenSpotAngle + FullIndicatorDistance)
@@ -156,6 +158,8 @@ public class LockpickingMiniGame : MonoBehaviour
             {
                 WinText.SetActive(true);
                 unfreezeGridMoves();
+                LockPickWin();
+                Invoke("FinishGame", 4f);
             }
         }
 
@@ -200,4 +204,9 @@ public class LockpickingMiniGame : MonoBehaviour
             LostText.SetActive(false);
         }
     }
+
+    private void FinishGame()
+    {
+       this.gameObject.SetActive(false);
+    }   
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class GridManager : MonoBehaviour
 {
@@ -17,9 +19,25 @@ public class GridManager : MonoBehaviour
     [Header("References")]
     public GridMover playerMover;
 
+    [Header("Matts amazing stuff")]
+    [SerializeField] public List<Vector2> SearcjableTilesList = new List<Vector2>();
+    [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
+    [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
+
+    // Store world positions of each cell
+    private Vector3[,] gridPositions;
     private void Awake()
     {
+        CollectLists();
         GenerateGrid();
+    }
+
+ public void CollectLists()
+    {
+        AllInteractableTiles.AddRange(SearcjableTilesList);
+        AllInteractableTiles.AddRange(Puzzletiles);
+        AllInteractableTiles.AddRange(WeaponTile);
     }
 
     private void GenerateGrid()
@@ -41,6 +59,31 @@ public class GridManager : MonoBehaviour
 
                 selector.Init(this, x, y, true, 1);
                 tiles[x, y] = selector;
+
+                foreach (Vector2 intGridPos in Puzzletiles)
+                    {
+                        if (intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
+                        }
+                    }
+
+                    foreach (Vector2 intGridPos in SearcjableTilesList)
+                    {
+                        if (intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
+                        }
+                    }
+
+                    foreach (Vector2 intGridPos in WeaponTile)
+                    {
+                        if (intGridPos.x == x && intGridPos.y == y)
+                        {
+                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Weapon;
+                        }
+                    }
+
             }
         }
     }
@@ -85,8 +128,10 @@ public class GridManager : MonoBehaviour
                 {
                     if (tiles[x, y] != null)
                     {
-                        if (tiles[x, y].isWalkable)
+                        if (tiles[x, y].isWalkable && tiles[x,y].GetComponent<InteractiveTile>() == null)
                             tiles[x, y].Highlight(Color.cyan);
+                        else if (tiles[x,y].GetComponent<InteractiveTile>() != null)
+                            tiles[x, y].Highlight(Color.yellow);
                         else
                             tiles[x, y].Highlight(Color.red);
                     }
@@ -101,7 +146,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (tiles[x, y] != null)
+                if (tiles[x, y] != null && tiles[x, y].GetComponent<InteractiveTile>() == null )
                     tiles[x, y].ResetColor();
             }
         }

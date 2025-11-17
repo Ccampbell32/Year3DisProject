@@ -11,6 +11,10 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private GameObject lockpickGame;
 
+    public delegate void WinHandler();
+    public static event WinHandler SearchFinished;
+    public static event WinHandler WeaponGot;
+
     void Start()
     {
         if(lockpickGame != null)
@@ -38,13 +42,13 @@ public class GameStateManager : MonoBehaviour
                     else if (hit.transform.name == searchableIconName.name)
                     {
                         //search
-                        //Debug.Log("search");
+                        SearchFinished();
                     }
 
                     else if (hit.transform.name == weaponIconName.name)
                     {
                         //weapon
-                        //Debug.Log("weapon 4");
+                        WeaponGot();
                     }
 
                 }

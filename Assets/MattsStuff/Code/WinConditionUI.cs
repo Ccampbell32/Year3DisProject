@@ -55,13 +55,10 @@ public class WinConditionUI : MonoBehaviour
     }
     void GotBat()
     {
-        if(!gotBat)
-        {
-            Bat.SetActive(true);
-            BatOutline.SetActive(false);
-            winCount += 1;
-            gotBat = true;
-        }
+        Bat.SetActive(true);
+        BatOutline.SetActive(false);
+        winCount += 1;
+        gotBat = true;
     }
     void GotTire()
     {
@@ -76,7 +73,7 @@ public class WinConditionUI : MonoBehaviour
     }
     void Update()
     {
-        if (winCount >= 3)
+        if (winCount >= 4)
         {
             winText.SetActive(true);
         }

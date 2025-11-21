@@ -122,11 +122,6 @@
                 "value": "{\"m_Value\":15.0}"
             },
             {
-                "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                "key": "ExtrudeFaces.distance",
-                "value": "{\"m_Value\":5.079999923706055}"
-            },
-            {
                 "type": "UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "mesh.userMaterial",
                 "value": "{\"m_Value\":{\"instanceID\":0}}"

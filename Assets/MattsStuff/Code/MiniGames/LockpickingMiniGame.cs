@@ -158,6 +158,7 @@ public class LockpickingMiniGame : MonoBehaviour
             {
                 gameOver = true;
                 WinText.SetActive(true);
+                if(LockPickWin != null)
                 LockPickWin();
                 Invoke("FinishGame", 4f);
             }

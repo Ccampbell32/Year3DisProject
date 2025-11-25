@@ -11,21 +11,21 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject weaponIconName;
 
     [SerializeField] private GameObject lockpickGame;
+    [SerializeField] private GameObject searchingGame;
 
     public delegate void WinHandler();
-    public static event WinHandler SearchFinished;
     public static event WinHandler WeaponGot;
 
     void Start()
     {
-        if(lockpickGame != null)
+        if (lockpickGame != null)
         {
             DeactivateMiniGame();
         }
     }
     void Update()
     {
-        if(EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
@@ -47,7 +47,7 @@ public class GameStateManager : MonoBehaviour
                     else if (hit.transform.name == searchableIconName.name)
                     {
                         //search
-                        SearchFinished();
+                        ActivateSearchMiniGame();
                     }
 
                     else if (hit.transform.name == weaponIconName.name)
@@ -59,6 +59,15 @@ public class GameStateManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ActivateSearchMiniGame()
+    {
+        searchingGame.SetActive(true);
+    }
+    public void DeactivateSearchMiniGame()
+    {
+        searchingGame.SetActive(false);
     }
 
     public void ActivatePickMiniGame()

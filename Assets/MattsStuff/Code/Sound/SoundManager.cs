@@ -3,49 +3,50 @@ using UnityEngine;
 using UnityEngine.Audio;
 namespace MattsSound.SoundManager
 {
-[RequireComponent(typeof(AudioSource))]
-public class SoundManager : MonoBehaviour
-{
-   [SerializeField] private SoundSO SO;
-private static SoundManager instance = null;
-private AudioSource audioSource;
-
-private void Awake()
-{
-    if(!instance)
+    [RequireComponent(typeof(AudioSource))]
+    public class SoundManager : MonoBehaviour
     {
-        instance = this;
-        audioSource = GetComponent<AudioSource>();
-    }
-}
+        [SerializeField] private SoundSO SO;
+        private static SoundManager instance = null;
+        private AudioSource audioSource;
 
-public static void PlaySound(SoundType sound, AudioSource source = null, float volume = 1)
-{
-    SoundList soundList = instance.SO.sounds[(int)sound];
-    AudioClip[] clips = soundList.sounds;
-    AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+        private void Awake()
+        {
+            if (!instance)
+            {
+                instance = this;
+                audioSource = GetComponent<AudioSource>();
+            }
+        }
 
-    if(source)
-    {
-        source.outputAudioMixerGroup = soundList.mixer;
-        source.clip = randomClip;
-        source.volume = volume * soundList.volume;
-        source.Play();
-    }
-    else
-    {
-        instance.audioSource.outputAudioMixerGroup = soundList.mixer;
-        instance.audioSource.PlayOneShot(randomClip, volume * soundList.volume);
-    }
-}
+        public static void PlaySound(SoundType sound, AudioSource source = null, float volume = 1)
+        {
+            SoundList soundList = instance.SO.sounds[(int)sound];
+            AudioClip[] clips = soundList.sounds;
+            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
-}
+            if (source)
+            {
+                source.outputAudioMixerGroup = soundList.mixer;
+                source.clip = randomClip;
+                source.volume = volume * soundList.volume;
+                source.Play();
+            }
+            else
+            {
+                instance.audioSource.outputAudioMixerGroup = soundList.mixer;
+                instance.audioSource.PlayOneShot(randomClip, volume * soundList.volume);
+            }
+        }
+
+    }
+
     [Serializable]
-public struct SoundList
+    public struct SoundList
     {
-     [HideInInspector] public string name;
-     [Range(0, 1)] public float volume;
-     public AudioMixerGroup mixer;
-     public AudioClip[] sounds;
+        [HideInInspector] public string name;
+        [Range(0, 1)] public float volume;
+        public AudioMixerGroup mixer;
+        public AudioClip[] sounds;
     }
 }

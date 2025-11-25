@@ -1,7 +1,8 @@
 using UnityEngine;
+
 namespace MattsSound.SoundManager
 {
-[CreateAssetMenu(fileName = "SoundSO", menuName = "ScriptableObjects/SoundSO")]
+    [CreateAssetMenu(menuName = "ScriptableObjects/SoundSO", fileName = "Sound SO")]
     public class SoundSO : ScriptableObject
     {
         public SoundList[] sounds;

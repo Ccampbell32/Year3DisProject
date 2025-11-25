@@ -7,11 +7,11 @@ using UnityEngine.Audio;
 
 namespace MattsSound.SoundManager
 {
-[CustomEditor(typeof(SoundSO))]
-public class SoundSOEditor : Editor
-{
-    private void OnEnable()
+    [CustomEditor(typeof(SoundSO))]
+    public class SoundSOEditor : Editor
     {
+        private void OnEnable()
+        {
 
             ref SoundList[] soundList = ref ((SoundSO)target).sounds;
 

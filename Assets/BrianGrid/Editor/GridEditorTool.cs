@@ -23,7 +23,7 @@ public class GridEditorTool : Editor
         {
             foreach (Transform child in grid.transform)
                 DestroyImmediate(child.gameObject);
-            grid.SendMessage("GenerateGrid");
+            //grid.SendMessage("GenerateGrid");
         }
 
         EditorGUILayout.HelpBox(

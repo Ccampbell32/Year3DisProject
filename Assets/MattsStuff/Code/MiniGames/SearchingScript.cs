@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SearchingScript : MonoBehaviour
 {
     private bool isSearching;
+    [SerializeField] private GameStateManager gameStateManager;
 
     [SerializeField] private Image searchProgressBar;
     void Awake()
@@ -25,6 +26,8 @@ public class SearchingScript : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         isSearching = false;
+        gameStateManager.DeactivateMiniGame();
+        
     }
 
     void Update()

@@ -53,6 +53,7 @@ public class GameStateManager : MonoBehaviour
                     else if (hit.transform.name == weaponIconName.name)
                     {
                         //weapon
+                        if (WeaponGot != null)
                         WeaponGot();
                     }
 

@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -265,6 +269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1784028745684930606, guid: dae1d46ebbf35ef4cbbe02b16f958658, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -286,6 +294,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -404,6 +416,10 @@ PrefabInstance:
     - target: {fileID: 7664727474817369554, guid: e559afc62ee6ad041a9cf5443ffa6495, type: 3}
       propertyPath: m_Name
       value: Plant Pot 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664727474817369554, guid: e559afc62ee6ad041a9cf5443ffa6495, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -724,6 +740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heater
       objectReference: {fileID: 0}
+    - target: {fileID: 8378406961454537862, guid: a6738ecfad199054897c5a1d7c8ea2df, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 9155189195807393340, guid: a6738ecfad199054897c5a1d7c8ea2df, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55
@@ -802,6 +822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -879,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 8343628646490237559, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
       propertyPath: m_Name
       value: Chair 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343628646490237559, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8683316804717818061, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
       propertyPath: m_LocalScale.x
@@ -1014,6 +1042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potted Plant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8984115585699267627, guid: c3207192eafbbb14182920291fee66c8, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1035,6 +1067,10 @@ PrefabInstance:
     - target: {fileID: 1388153130182825531, guid: 913041a3822a0674ba095e923b638cb6, type: 3}
       propertyPath: m_Name
       value: Table 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388153130182825531, guid: 913041a3822a0674ba095e923b638cb6, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 1731745409402178689, guid: 913041a3822a0674ba095e923b638cb6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1283,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -1430,7 +1470,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 424864301}
+    m_TransformParent: {fileID: 1944320574}
     m_Modifications:
     - target: {fileID: 2515495384416291203, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_Enabled
@@ -1446,7 +1486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.715
+      value: 0.71500003
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalScale.z
@@ -1454,15 +1494,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1672425
+      value: -0.84300065
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.624
+      value: 0.08708286
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3360065
+      value: 1.0320053
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1474,11 +1514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 9146371682854901264, guid: fbc41695c3d07074f815a9e93aff256f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1740,6 +1780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -1981,19 +2025,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1349331553337553975, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 1.3684194
       objectReference: {fileID: 0}
     - target: {fileID: 1349331553337553975, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.33
+      value: 0.66187286
       objectReference: {fileID: 0}
     - target: {fileID: 1497439744305612298, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7033948
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497439744305612298, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.71079946
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497439744305612298, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2002,6 +2046,10 @@ PrefabInstance:
     - target: {fileID: 2612625725839387992, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_Name
       value: Wardrobe 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612625725839387992, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 3389585362925156322, guid: 000adeb15feb9244ab9f7c88b3c992d1, type: 3}
       propertyPath: m_LocalScale.x
@@ -2145,6 +2193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Pickup Truck
       objectReference: {fileID: 0}
+    - target: {fileID: 4540549778373609202, guid: 51e1640f84ec7094d81e7de12030ea0d, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2166,6 +2218,10 @@ PrefabInstance:
     - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_Name
       value: Pillow 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 6456452478150315081, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_LocalScale.x
@@ -2301,6 +2357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bowl
       objectReference: {fileID: 0}
+    - target: {fileID: 5259413340761638507, guid: 7000aca16ff28c64ca4f907fa5b4d08b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2322,6 +2382,10 @@ PrefabInstance:
     - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_Name
       value: Pillow 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 6456452478150315081, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_LocalScale.x
@@ -2400,7 +2464,7 @@ GameObject:
   - component: {fileID: 424864301}
   m_Layer: 0
   m_Name: LevelDesign
-  m_TagString: Untagged
+  m_TagString: 'NotWalkable '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2427,7 +2491,6 @@ Transform:
   - {fileID: 1935201934}
   - {fileID: 1800406076}
   - {fileID: 200257169}
-  - {fileID: 1309189387}
   - {fileID: 2116867988}
   - {fileID: 335442995}
   - {fileID: 1256323196}
@@ -2442,7 +2505,6 @@ Transform:
   - {fileID: 6667195054504125566}
   - {fileID: 6667195053452918389}
   - {fileID: 6667195053221935263}
-  - {fileID: 287007624}
   - {fileID: 1915198008}
   - {fileID: 2088358358}
   - {fileID: 707734055}
@@ -2661,6 +2723,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3117,6 +3183,142 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &493522000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493522001}
+  - component: {fileID: 493522003}
+  - component: {fileID: 493522002}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &493522001
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493522000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 535094852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &493522002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493522000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: End Turn
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &493522003
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493522000}
+  m_CullTransparentMesh: 1
 --- !u!1 &496244219
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5302,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512193904}
   m_CullTransparentMesh: 1
+--- !u!1 &535094851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535094852}
+  - component: {fileID: 535094855}
+  - component: {fileID: 535094854}
+  - component: {fileID: 535094853}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &535094852
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535094851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 493522001}
+  m_Father: {fileID: 1582300116}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -322.99997, y: -190.7}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &535094853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535094851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 535094854}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 961867287}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &535094854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535094851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &535094855
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535094851}
+  m_CullTransparentMesh: 1
 --- !u!1001 &543196279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5111,6 +5446,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -5189,6 +5528,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -5375,7 +5718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032c8c45d5511d84a9b17b46e5887507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMover: {fileID: 919132147595856050}
   IsPlayerTurn: 1
 --- !u!1001 &641638504
 PrefabInstance:
@@ -5388,6 +5730,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -5523,6 +5869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cup 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7529877799423606608, guid: 4e434855983b272418bd97c39cc6b811, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5619,6 +5969,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -5754,6 +6108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4314059688521422383, guid: e73ca17932ada01428ed781727be0de0, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8757072935761560783, guid: e73ca17932ada01428ed781727be0de0, type: 3}
@@ -5776,6 +6134,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -5854,6 +6216,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -6007,6 +6373,10 @@ PrefabInstance:
     - target: {fileID: 295035730417315833, guid: 488136f949835814eaa08b239c9a5337, type: 3}
       propertyPath: m_Name
       value: Window 16 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 295035730417315833, guid: 488136f949835814eaa08b239c9a5337, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 1104505350165509443, guid: 488136f949835814eaa08b239c9a5337, type: 3}
       propertyPath: m_LocalScale.x
@@ -6427,12 +6797,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859656565}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.053, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1944320574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &862685418
 PrefabInstance:
@@ -6445,6 +6815,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -6523,6 +6897,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -6677,6 +7055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -6743,6 +7125,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
   m_PrefabInstance: {fileID: 952615454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &961867287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961867289}
+  - component: {fileID: 961867288}
+  m_Layer: 0
+  m_Name: TurnUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &961867288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961867287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4c675da7ce442429a5b3d2c0cb5aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &961867289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961867287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.52130437, y: 1.436178, z: 1.2174792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1582300116}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971039654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,6 +7267,10 @@ PrefabInstance:
     - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_Name
       value: Pillow 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 6456452478150315081, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_LocalScale.x
@@ -7349,6 +7780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -7466,6 +7901,10 @@ PrefabInstance:
     - target: {fileID: 8651391845238856248, guid: 8e785561f7b42e34daacd4d063d7d0dd, type: 3}
       propertyPath: m_Name
       value: Plant Pot 3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651391845238856248, guid: 8e785561f7b42e34daacd4d063d7d0dd, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7840,6 +8279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -8123,6 +8566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -8200,6 +8647,10 @@ PrefabInstance:
     - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_Name
       value: Pillow 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 6456452478150315081, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_LocalScale.x
@@ -8331,13 +8782,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Refrigerator 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3456892473964147292, guid: fad3b424033117142be10be7accac308, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 3865649993181192563, guid: fad3b424033117142be10be7accac308, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7013449
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3865649993181192563, guid: fad3b424033117142be10be7accac308, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7128221
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3865649993181192563, guid: fad3b424033117142be10be7accac308, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -8421,6 +8876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potted Plant 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8984115585699267627, guid: c3207192eafbbb14182920291fee66c8, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8483,6 +8942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant Pot 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8651391845238856248, guid: 8e785561f7b42e34daacd4d063d7d0dd, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8504,6 +8967,10 @@ PrefabInstance:
     - target: {fileID: 295035730417315833, guid: 488136f949835814eaa08b239c9a5337, type: 3}
       propertyPath: m_Name
       value: Window 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 295035730417315833, guid: 488136f949835814eaa08b239c9a5337, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 1104505350165509443, guid: 488136f949835814eaa08b239c9a5337, type: 3}
       propertyPath: m_LocalScale.x
@@ -8780,19 +9247,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 424864301}
+    m_TransformParent: {fileID: 1944320574}
     m_Modifications:
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.806243
+      value: -3.4820025
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6399176
+      value: 0.10299873
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.1600065
+      value: -1.7919941
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8804,11 +9271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 306188191756942158, guid: fbd31b03cb5f3f041b58fe1170cfb0c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8904,6 +9371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Air Conditioner 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75bbc07d02543274e9830a4ae3e4f7a5, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8925,6 +9396,10 @@ PrefabInstance:
     - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_Name
       value: Pillow 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967900620301489907, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 6456452478150315081, guid: 62db56cededaad44da3f56ced51d6274, type: 3}
       propertyPath: m_LocalScale.x
@@ -9060,6 +9535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bowl (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5259413340761638507, guid: 7000aca16ff28c64ca4f907fa5b4d08b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9138,6 +9617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bowl (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5259413340761638507, guid: 7000aca16ff28c64ca4f907fa5b4d08b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9159,6 +9642,10 @@ PrefabInstance:
     - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_Name
       value: Milk Carton (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
@@ -9364,6 +9851,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581189361}
   m_CullTransparentMesh: 1
+--- !u!1 &1582300115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582300116}
+  - component: {fileID: 1582300119}
+  - component: {fileID: 1582300118}
+  - component: {fileID: 1582300117}
+  m_Layer: 5
+  m_Name: EndTurnButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1582300116
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582300115}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 535094852}
+  m_Father: {fileID: 961867289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1582300117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582300115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1582300118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582300115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1582300119
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582300115}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1591135494
 GameObject:
   m_ObjectHideFlags: 0
@@ -9587,6 +10176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Carton (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274669567233399797, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8763539290847101263, guid: 2aaf1ff8dd822664783fe32f02af481a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.57
@@ -9721,6 +10314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cup 4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7529877799423606608, guid: 4e434855983b272418bd97c39cc6b811, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9799,6 +10396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Air Conditioner 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75bbc07d02543274e9830a4ae3e4f7a5, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9860,6 +10461,10 @@ PrefabInstance:
     - target: {fileID: 8651391845238856248, guid: 8e785561f7b42e34daacd4d063d7d0dd, type: 3}
       propertyPath: m_Name
       value: Plant Pot 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651391845238856248, guid: 8e785561f7b42e34daacd4d063d7d0dd, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10027,6 +10632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8343628646490237559, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 8683316804717818061, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.67
@@ -10093,6 +10702,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8683316804717818061, guid: 23696b12641c2d54a8bdaa31535a190b, type: 3}
   m_PrefabInstance: {fileID: 1800406075}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1815363692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815363694}
+  - component: {fileID: 1815363693}
+  m_Layer: 0
+  m_Name: Pathfinding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1815363693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815363692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1523404ffaed5743a8f6c97a46bbc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1815363694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815363692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.52130437, y: 1.436178, z: 1.2174792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843683231
 GameObject:
   m_ObjectHideFlags: 0
@@ -10202,6 +10855,10 @@ PrefabInstance:
     - target: {fileID: 430996926177148933, guid: 85db13d811fb71f41806ab13f5990e48, type: 3}
       propertyPath: m_Name
       value: Desk 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430996926177148933, guid: 85db13d811fb71f41806ab13f5990e48, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 1058598555941558975, guid: 85db13d811fb71f41806ab13f5990e48, type: 3}
       propertyPath: m_LocalScale.x
@@ -10411,6 +11068,10 @@ PrefabInstance:
     - target: {fileID: 8927805892983263572, guid: f945f54b6245aa446930af1fb40762eb, type: 3}
       propertyPath: m_Name
       value: Sofa 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927805892983263572, guid: f945f54b6245aa446930af1fb40762eb, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11684,7 +12345,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1309189387}
+  - {fileID: 287007624}
+  - {fileID: 859656571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1952924433
@@ -11755,6 +12419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Container 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7970140317087810869, guid: e2802ce6b21f34344bc910cf30e9b3a8, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11799,6 +12467,10 @@ PrefabInstance:
     - target: {fileID: 2544182666285104212, guid: d33fec0e1a12fb6449bcdd0aa9f599a8, type: 3}
       propertyPath: m_Name
       value: TV Cabinet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544182666285104212, guid: d33fec0e1a12fb6449bcdd0aa9f599a8, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     - target: {fileID: 2883728777325668078, guid: d33fec0e1a12fb6449bcdd0aa9f599a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -12114,6 +12786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Office Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 6021452497194676700, guid: b89df4a57179ad74297b1d974d7c5a7b, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     - target: {fileID: 6402904294921415526, guid: b89df4a57179ad74297b1d974d7c5a7b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.59000003
@@ -12244,6 +12920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vanity Sink
       objectReference: {fileID: 0}
+    - target: {fileID: 4314445581594407503, guid: 48d79721cc83bec40818ccf23d49dd74, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12321,6 +13001,10 @@ PrefabInstance:
     - target: {fileID: 745091817260155985, guid: a45ae54f1ea0b254bb593bc30e3fd748, type: 3}
       propertyPath: m_Name
       value: Kitchen Cabinet 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 745091817260155985, guid: a45ae54f1ea0b254bb593bc30e3fd748, type: 3}
+      propertyPath: m_TagString
+      value: 'NotWalkable '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15702,7 +16386,6 @@ SceneRoots:
   - {fileID: 1279653158}
   - {fileID: 139816974}
   - {fileID: 1944320574}
-  - {fileID: 859656571}
   - {fileID: 501974562}
   - {fileID: 1778181082}
   - {fileID: 424864301}
@@ -15714,3 +16397,5 @@ SceneRoots:
   - {fileID: 287691905}
   - {fileID: 971039657}
   - {fileID: 4004984916599205921}
+  - {fileID: 1815363694}
+  - {fileID: 961867289}

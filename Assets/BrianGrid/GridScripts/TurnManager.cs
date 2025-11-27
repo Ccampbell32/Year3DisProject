@@ -2,32 +2,40 @@
 
 public class TurnManager : MonoBehaviour
 {
-    public GridMover playerMover;
+    public static TurnManager Instance;
+
     public bool IsPlayerTurn = true;
 
-    private void Start()
+    private void Awake()
     {
-        if (playerMover == null)
-            playerMover = FindObjectOfType<GridMover>();
+        Instance = this;
     }
 
-    private void Update()
+    public void EndTurn()
     {
         if (IsPlayerTurn)
         {
-            // You can extend this for multiple turns or AI later
+            Debug.Log("Player ended turn!");
+            IsPlayerTurn = false;
+
+            // Call enemy actions here
+            EnemyPhase();
         }
     }
 
-    public void EndPlayerTurn()
+    private void EnemyPhase()
     {
-        IsPlayerTurn = false;
-        Debug.Log("Player turn ended!");
+        Debug.Log("Enemy turn started!");
+
+        // TODO: Add enemy movement logic here
+
+        // When enemies finish:
+        StartPlayerTurn();
     }
 
     public void StartPlayerTurn()
     {
-        IsPlayerTurn = true;
         Debug.Log("Player turn started!");
+        IsPlayerTurn = true;
     }
 }

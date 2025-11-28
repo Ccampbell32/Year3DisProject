@@ -8,6 +8,7 @@ public class ChangeSelectedCharacter : MonoBehaviour
         Ashley,
         Joe,
     }
+
    [SerializeField] private Camera mainCamera;    
    [SerializeField] private GameObject currentCharacter;
    [SerializeField] private GameObject[] playableCharacters;
@@ -30,19 +31,7 @@ public class ChangeSelectedCharacter : MonoBehaviour
             StartCoroutine(MoveCameraToCharacter());
             //mainCamera.transform.localPosition = new Vector3( 25f, 45f, currentCharacter.transform.position.z); 
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeCharacter(Characters.Joe);    
-        }
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            ChangeCharacter(Characters.Ashley);
-        }
-    }
-
+    
     private IEnumerator MoveCameraToCharacter( )
     {
         Vector3 targetPos = new Vector3( 25f, 45f, currentCharacter.transform.position.z); 

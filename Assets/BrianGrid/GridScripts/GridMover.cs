@@ -24,13 +24,13 @@ public class GridMover : MonoBehaviour
     public void FreezeGridMoves()
     {
         isFreeze = true;
-        Debug.Log("freeze");
+        //Debug.Log("freeze");
     }
 
     public void UnfreezeGridMoves()
     {
         isFreeze = false;
-        Debug.Log("unfreeze");
+        //Debug.Log("unfreeze");
     }
     private void Start()
     {

@@ -39,7 +39,7 @@ public class WinConditionUI : MonoBehaviour
         BatOutline.SetActive(true);
 
         LockpickingMiniGame.LockPickWin += GotKey;
-        GameStateManager.SearchFinished += GotBat;
+        //GameStateManager.SearchFinished += GotBat;
         GameStateManager.WeaponGot += GotTire;
     }
 

@@ -1,0 +1,82 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class GameStateManager : MonoBehaviour
+{
+    
+    
+    [SerializeField] private string iconTagName;
+    [SerializeField] private GameObject puzzleIconName;
+    [SerializeField] private GameObject searchableIconName;
+    [SerializeField] private GameObject weaponIconName;
+
+    [SerializeField] private GameObject lockpickGame;
+    [SerializeField] private GameObject searchingGame;
+
+    public delegate void WinHandler();
+    public static event WinHandler WeaponGot;
+
+    void Start()
+    {
+        if (lockpickGame != null)
+        {
+            DeactivateMiniGame();
+        }
+    }
+    void Update()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log("worked");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+
+                if (hit.transform.CompareTag(iconTagName))
+                {
+                    if (hit.transform.name == puzzleIconName.name)
+                    {
+                        //activate puzzle
+                        ActivatePickMiniGame();
+                    }
+
+                    else if (hit.transform.name == searchableIconName.name)
+                    {
+                        //search
+                        ActivateSearchMiniGame();
+                    }
+
+                    else if (hit.transform.name == weaponIconName.name)
+                    {
+                        //weapon
+                        if (WeaponGot != null)
+                        WeaponGot();
+                    }
+
+                }
+            }
+        }
+    }
+
+    public void ActivateSearchMiniGame()
+    {
+        searchingGame.SetActive(true);
+    }
+    public void DeactivateSearchMiniGame()
+    {
+        searchingGame.SetActive(false);
+    }
+
+    public void ActivatePickMiniGame()
+    {
+        lockpickGame.SetActive(true);
+    }
+    public void DeactivateMiniGame()
+    {
+        lockpickGame.SetActive(false);
+    }
+}

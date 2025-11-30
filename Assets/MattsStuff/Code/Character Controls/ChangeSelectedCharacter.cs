@@ -1,19 +1,19 @@
 using System.Collections;
 using UnityEngine;
-
-public class ChangeSelectedCharacter : MonoBehaviour
-{
-    public enum Characters
+public enum Characters
     {
         Ashley,
         Joe,
     }
+public class ChangeSelectedCharacter : MonoBehaviour
+{
 
    [SerializeField] private Camera mainCamera;    
    [SerializeField] private GameObject currentCharacter;
    [SerializeField] private GameObject[] playableCharacters;
+   private Characters character; 
 
-    public void ChangeCharacter(Characters character)    
+    public void ChangeCharacter()    
     {
         if(currentCharacter == playableCharacters[(int)character])
             return;
@@ -40,5 +40,16 @@ public class ChangeSelectedCharacter : MonoBehaviour
             mainCamera.transform.localPosition = Vector3.Lerp(mainCamera.transform.localPosition, targetPos, Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void SelectAshley()
+    {
+        character = Characters.Ashley;
+        ChangeCharacter();
+    }
+    public void SelectJoe()
+    {
+        character = Characters.Joe;
+        ChangeCharacter();
     }
 }

@@ -18,14 +18,14 @@ public class WinConditionUI : MonoBehaviour
     private int winCount; 
 
     private bool gotKey;
-    private bool gotBat;
+    //private bool gotBat;
     private bool gotTire;
 
 
     void Start()
     {
         gotKey = false;
-        gotBat = false;
+        //gotBat = false;
         gotTire = false;
 
         winCount = 0;
@@ -58,7 +58,7 @@ public class WinConditionUI : MonoBehaviour
         Bat.SetActive(true);
         BatOutline.SetActive(false);
         winCount += 1;
-        gotBat = true;
+        //gotBat = true;
     }
     void GotTire()
     {

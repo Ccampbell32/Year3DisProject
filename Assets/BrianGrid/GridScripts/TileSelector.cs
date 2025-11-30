@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Renderer))]
 public class TileSelector : MonoBehaviour
@@ -11,10 +12,24 @@ public class TileSelector : MonoBehaviour
     [HideInInspector] public bool isWalkable = true;
     [HideInInspector] public int moveCost = 1;
 
+    private bool isFreeze;
+
     private void Awake()
     {
         rend = GetComponent<Renderer>();
         baseColor = rend.material.color;
+        isFreeze = false;
+        LockpickingMiniGame.freezeGridMove += FreezeSelection;
+        LockpickingMiniGame.unfreezeGridMoves += UnfreezeSelection;
+    }
+
+    private void FreezeSelection()
+    {
+        isFreeze = true; 
+    }
+    private void UnfreezeSelection()
+    {
+        isFreeze = false; 
     }
 
     public void Init(GridManager manager, int gridX, int gridY, bool walkable, int cost)
@@ -28,7 +43,7 @@ public class TileSelector : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gridManager == null) return;
+        if (gridManager == null || isFreeze ) return;
         gridManager.OnTileClicked(x, y);
     }
 

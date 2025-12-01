@@ -22,8 +22,6 @@ public class TileSelector : MonoBehaviour
         isFreeze = false;
         LockpickingMiniGame.freezeGridMove += FreezeSelection;
         LockpickingMiniGame.unfreezeGridMoves += UnfreezeSelection;
-        ChangeSelectedCharacter.freezeTileSelection += FreezeSelection;
-        ChangeSelectedCharacter.unfreezeTileSelection += UnfreezeSelection;
     }
 
     private void FreezeSelection()
@@ -48,17 +46,17 @@ public class TileSelector : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Clicked on UI, ignoring tile click.");
+            //Debug.Log("Clicked on UI, ignoring tile click.");
             return;
         }
 
         if (gridManager == null || isFreeze)
         {
-            Debug.Log("Tile selection is frozen or GridManager is null.");
+            //Debug.Log("Tile selection is frozen or GridManager is null.");
             return;
         }
 
-        Debug.Log($"Tile at ({x}, {y}) clicked.");
+        //Debug.Log($"Tile at ({x}, {y}) clicked.");
         gridManager.OnTileClicked(x, y);
     }
 

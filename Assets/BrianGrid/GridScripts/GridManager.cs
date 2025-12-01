@@ -68,7 +68,7 @@ public class GridManager : MonoBehaviour
                 {
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
+                        tileObj.AddComponent<InteractiveTile>().tileType = TileType.Puzzle;
                     }
                 }
 
@@ -76,7 +76,7 @@ public class GridManager : MonoBehaviour
                 {
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
+                        tileObj.AddComponent<InteractiveTile>().tileType = TileType.Searchable;
                     }
                 }
 
@@ -84,7 +84,7 @@ public class GridManager : MonoBehaviour
                 {
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Weapon;
+                        tileObj.AddComponent<InteractiveTile>().tileType = TileType.Weapon;
                     }
                 }
 
@@ -137,7 +137,7 @@ public class GridManager : MonoBehaviour
                         if (tiles[x, y].isWalkable && tiles[x, y].GetComponent<InteractiveTile>() == null)
                             tiles[x, y].Highlight(Color.cyan);
                         else if (tiles[x, y].GetComponent<InteractiveTile>() != null)
-                            tiles[x, y].Highlight(Color.yellow);
+                            tiles[x, y].Highlight(Color.magenta);
                         else
                             tiles[x, y].Highlight(Color.red);
                     }

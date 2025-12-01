@@ -28,6 +28,9 @@ public class LockpickingMiniGame : MonoBehaviour
     [SerializeField] private float breakThreshold;
     [SerializeField] private float unlockThreshold;
 
+    [Header("Timers")]
+    [SerializeField] private float finishTime;
+
     private float percentageTurn; //0-1
 
     private Vector3 screenPosition;
@@ -99,7 +102,7 @@ public class LockpickingMiniGame : MonoBehaviour
             //Debug.Log("Broke");
             LostText.SetActive(true);
             unfreezeGridMoves();
-            Invoke("FinishGame", 4f);
+            Invoke("FinishGame", finishTime);
         }
 
         else if (isPicking && currentAngle >= greenSpotAngle - FullIndicatorDistance && currentAngle <= greenSpotAngle + FullIndicatorDistance)

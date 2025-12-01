@@ -16,10 +16,6 @@ public class ChangeSelectedCharacter : MonoBehaviour
     [SerializeField] private GameObject[] playableCharacters;
     private Characters character;
 
-    public delegate void ChangeHandle();
-    public static event ChangeHandle freezeTileSelection;
-    public static event ChangeHandle unfreezeTileSelection;
-
     private void Start()
     {
         currentCharacter = playableCharacters[0];

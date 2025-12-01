@@ -2277,8 +2277,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1008.19
-  field of view: 62
+  far clip plane: 256.71002
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -10939,7 +10939,8 @@ MonoBehaviour:
   normalTilePrefab: {fileID: 3380011434841828342, guid: 9ad86f6444117ab439a06fb97957110e, type: 3}
   mudTilePrefab: {fileID: 1032404514726495432, guid: c87616fea20c65045b0254a644b31af4, type: 3}
   wallTilePrefab: {fileID: 1875356769243329138, guid: 13f726f182249da40b59b520963b8946, type: 3}
-  playerMover: {fileID: 919132147595856050}
+  currentCharacterObject: {fileID: 0}
+  changeSelectedCharacter: {fileID: 2051918048}
   SearcjableTilesList:
   - {x: 20, y: 7}
   WeaponTile:
@@ -17080,6 +17081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 139816973}
   currentCharacter: {fileID: 919132147595856049}
+  gridManager: {fileID: 997777503}
   playableCharacters:
   - {fileID: 919132147595856049}
   - {fileID: 1400393115}

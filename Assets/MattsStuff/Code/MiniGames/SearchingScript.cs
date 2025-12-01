@@ -23,10 +23,12 @@ public class SearchingScript : MonoBehaviour
     private IEnumerator SearchProgress()
     {
         isSearching = true;
+        Debug.Log("Searching...");
         yield return new WaitForSeconds(2f);
 
         isSearching = false;
-        gameStateManager.DeactivateMiniGame();
+        Debug.Log("Search Complete");
+        gameStateManager.DeactivateSearchMiniGame();
         
     }
 

@@ -17,7 +17,11 @@ public class GridManager : MonoBehaviour
     [HideInInspector] public TileSelector[,] tiles;
 
     [Header("References")]
-    public GridMover playerMover;
+    private GridMover currentGridMover;
+    private Characters currentCharacter;
+    [SerializeField] private GameObject currentCharacterObject;
+
+    [SerializeField] private ChangeSelectedCharacter changeSelectedCharacter;
 
     [Header("Matts amazing stuff")]
     [SerializeField] public List<Vector2> SearcjableTilesList = new List<Vector2>();
@@ -33,7 +37,7 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
     }
 
- public void CollectLists()
+    public void CollectLists()
     {
         AllInteractableTiles.AddRange(SearcjableTilesList);
         AllInteractableTiles.AddRange(Puzzletiles);
@@ -61,28 +65,28 @@ public class GridManager : MonoBehaviour
                 tiles[x, y] = selector;
 
                 foreach (Vector2 intGridPos in Puzzletiles)
+                {
+                    if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
-                        }
+                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Puzzle;
                     }
+                }
 
-                    foreach (Vector2 intGridPos in SearcjableTilesList)
+                foreach (Vector2 intGridPos in SearcjableTilesList)
+                {
+                    if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
-                        }
+                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Searchable;
                     }
+                }
 
-                    foreach (Vector2 intGridPos in WeaponTile)
+                foreach (Vector2 intGridPos in WeaponTile)
+                {
+                    if (intGridPos.x == x && intGridPos.y == y)
                     {
-                        if (intGridPos.x == x && intGridPos.y == y)
-                        {
-                            tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Weapon;
-                        }
+                        tileObj.AddComponent<InteractiveTile>().tileType = InteractiveTile.TileType.Weapon;
                     }
+                }
 
             }
         }
@@ -107,13 +111,15 @@ public class GridManager : MonoBehaviour
 
     public void OnTileClicked(int x, int y)
     {
-        if (playerMover == null)
+        //Debug.Log($"Tile clicked at ({x}, {y})");
+
+        if (currentGridMover == null)
             return;
 
         if (!IsValidTile(x, y))
             return;
 
-        playerMover.MoveToTile(x, y);
+        currentGridMover.MoveToTile(x, y);
     }
 
     public void HighlightRange(Vector2Int center, int range)
@@ -128,9 +134,9 @@ public class GridManager : MonoBehaviour
                 {
                     if (tiles[x, y] != null)
                     {
-                        if (tiles[x, y].isWalkable && tiles[x,y].GetComponent<InteractiveTile>() == null)
+                        if (tiles[x, y].isWalkable && tiles[x, y].GetComponent<InteractiveTile>() == null)
                             tiles[x, y].Highlight(Color.cyan);
-                        else if (tiles[x,y].GetComponent<InteractiveTile>() != null)
+                        else if (tiles[x, y].GetComponent<InteractiveTile>() != null)
                             tiles[x, y].Highlight(Color.yellow);
                         else
                             tiles[x, y].Highlight(Color.red);
@@ -146,7 +152,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (tiles[x, y] != null && tiles[x, y].GetComponent<InteractiveTile>() == null )
+                if (tiles[x, y] != null && tiles[x, y].GetComponent<InteractiveTile>() == null)
                     tiles[x, y].ResetColor();
             }
         }
@@ -161,4 +167,17 @@ public class GridManager : MonoBehaviour
     {
         HighlightRange(pos, 3);
     }
+
+    public void ResetHighlights()
+    {
+        ClearHighlights();
+        HighlightRange(currentGridMover.GetCurrentGridPos(), 3);
+    }
+
+    public void SetCurrentCharacter( )
+    {
+        currentCharacterObject = changeSelectedCharacter.GetCurrentCharacterObject();
+        currentGridMover = currentCharacterObject.GetComponent<GridMover>();
+    }
+
 }

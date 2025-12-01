@@ -53,9 +53,15 @@ public class GridMover : MonoBehaviour
 
     private void Update()
     {
-        if (isFreeze) return;
+        if (isFreeze) 
+        {
+            Debug.Log("frozen");
+            return;
+        }
+
         if (isMoving)
         {
+            Debug.Log("moving");
             transform.position = Vector3.MoveTowards(transform.position, targetWorldPos, moveSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, targetWorldPos) < 0.01f)
             {

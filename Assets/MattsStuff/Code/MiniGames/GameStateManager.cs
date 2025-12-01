@@ -13,14 +13,22 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject lockpickGame;
     [SerializeField] private GameObject searchingGame;
 
+    private bool searchesFinished;
+    private bool lockpickGameFinished;
+
     public delegate void WinHandler();
     public static event WinHandler WeaponGot;
 
     void Start()
     {
+        searchesFinished = false;
         if (lockpickGame != null)
         {
-            DeactivateMiniGame();
+            DeactivatePickMiniGame();
+        }
+        if (searchingGame != null)
+        {
+            DeactivateSearchMiniGame();
         }
     }
     void Update()
@@ -41,13 +49,19 @@ public class GameStateManager : MonoBehaviour
                     if (hit.transform.name == puzzleIconName.name)
                     {
                         //activate puzzle
-                        ActivatePickMiniGame();
+                        if(!lockpickGameFinished)
+                        {
+                            ActivatePickMiniGame();
+                        }
                     }
 
                     else if (hit.transform.name == searchableIconName.name)
                     {
                         //search
-                        ActivateSearchMiniGame();
+                        if(!searchesFinished)
+                        {
+                            ActivateSearchMiniGame();
+                        }
                     }
 
                     else if (hit.transform.name == weaponIconName.name)
@@ -64,7 +78,11 @@ public class GameStateManager : MonoBehaviour
 
     public void ActivateSearchMiniGame()
     {
+        if(searchesFinished) return;
+        
         searchingGame.SetActive(true);
+        searchesFinished = true;
+        
     }
     public void DeactivateSearchMiniGame()
     {
@@ -73,10 +91,15 @@ public class GameStateManager : MonoBehaviour
 
     public void ActivatePickMiniGame()
     {
+        //Debug.Log("activate");
+        if(lockpickGameFinished) return;
+
         lockpickGame.SetActive(true);
+        lockpickGameFinished = true;
     }
-    public void DeactivateMiniGame()
+    public void DeactivatePickMiniGame()
     {
+        //Debug.Log("deactivate");
         lockpickGame.SetActive(false);
     }
 }

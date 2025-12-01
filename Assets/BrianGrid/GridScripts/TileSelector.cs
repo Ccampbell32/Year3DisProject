@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Renderer))]
@@ -21,15 +22,17 @@ public class TileSelector : MonoBehaviour
         isFreeze = false;
         LockpickingMiniGame.freezeGridMove += FreezeSelection;
         LockpickingMiniGame.unfreezeGridMoves += UnfreezeSelection;
+        ChangeSelectedCharacter.freezeTileSelection += FreezeSelection;
+        ChangeSelectedCharacter.unfreezeTileSelection += UnfreezeSelection;
     }
 
     private void FreezeSelection()
     {
-        isFreeze = true; 
+        isFreeze = true;
     }
     private void UnfreezeSelection()
     {
-        isFreeze = false; 
+        isFreeze = false;
     }
 
     public void Init(GridManager manager, int gridX, int gridY, bool walkable, int cost)
@@ -43,7 +46,19 @@ public class TileSelector : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gridManager == null || isFreeze ) return;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Clicked on UI, ignoring tile click.");
+            return;
+        }
+
+        if (gridManager == null || isFreeze)
+        {
+            Debug.Log("Tile selection is frozen or GridManager is null.");
+            return;
+        }
+
+        Debug.Log($"Tile at ({x}, {y}) clicked.");
         gridManager.OnTileClicked(x, y);
     }
 

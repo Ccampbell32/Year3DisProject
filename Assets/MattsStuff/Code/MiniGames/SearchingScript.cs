@@ -26,6 +26,7 @@ public class SearchingScript : MonoBehaviour
     private IEnumerator SearchProgress()
     {
         isSearching = true;
+        searchProgressBar.fillAmount = 0f;
         //Debug.Log("Searching...");
         yield return new WaitForSeconds(2f);
 
@@ -40,7 +41,7 @@ public class SearchingScript : MonoBehaviour
     {
         if (isSearching)
         {
-            searchProgressBar.fillAmount += 0.0007f;
+            searchProgressBar.fillAmount += 0.0014f;
         }
     }
 

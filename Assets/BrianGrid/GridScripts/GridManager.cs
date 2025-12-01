@@ -174,10 +174,49 @@ public class GridManager : MonoBehaviour
         HighlightRange(currentGridMover.GetCurrentGridPos(), 3);
     }
 
-    public void SetCurrentCharacter( )
+    public void SetCurrentCharacter()
     {
         currentCharacterObject = changeSelectedCharacter.GetCurrentCharacterObject();
         currentGridMover = currentCharacterObject.GetComponent<GridMover>();
     }
+    public void ReplaceInteractibleTile()
+    {
+        Vector2Int currentGridPos = currentGridMover.GetCurrentGridPos();
+
+        foreach (Vector2 intGridPos in Puzzletiles)
+        {
+            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
+            {
+                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
+                Destroy(tileObj.GetComponent<InteractiveTile>());
+                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
+                Puzzletiles.Remove(intGridPos);
+            }
+        }
+
+        foreach (Vector2 intGridPos in SearcjableTilesList)
+        {
+            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
+            {
+                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
+                Destroy(tileObj.GetComponent<InteractiveTile>());
+                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
+                SearcjableTilesList.Remove(intGridPos);
+            }
+        }
+
+        foreach (Vector2 intGridPos in WeaponTile)
+        {
+            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
+            {
+                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
+                Destroy(tileObj.GetComponent<InteractiveTile>());
+                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
+                WeaponTile.Remove(intGridPos);
+            }
+        }
+
+    }
+
 
 }

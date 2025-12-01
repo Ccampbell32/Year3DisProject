@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject lockpickGame;
     [SerializeField] private GameObject searchingGame;
 
+    [SerializeField] private GridManager gridManager;
     private bool searchesFinished;
     private bool lockpickGameFinished;
 
@@ -21,6 +22,8 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
+        gridManager = GetComponent<GridManager>();
+
         searchesFinished = false;
         if (lockpickGame != null)
         {
@@ -79,14 +82,14 @@ public class GameStateManager : MonoBehaviour
     public void ActivateSearchMiniGame()
     {
         if(searchesFinished) return;
-        
+
         searchingGame.SetActive(true);
-        searchesFinished = true;
         
     }
     public void DeactivateSearchMiniGame()
     {
         searchingGame.SetActive(false);
+        gridManager.ReplaceInteractibleTile();
     }
 
     public void ActivatePickMiniGame()

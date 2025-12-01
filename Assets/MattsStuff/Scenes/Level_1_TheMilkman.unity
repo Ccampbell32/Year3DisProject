@@ -9991,6 +9991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPlayerTurn: 1
   turnTimeLimit: 10
+  handToTurn: {fileID: 6595808124849398355}
 --- !u!1 &629353909
 GameObject:
   m_ObjectHideFlags: 0
@@ -32879,7 +32880,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1340688651190757897}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 359.01}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3401347041674005137
 MeshFilter:
   m_ObjectHideFlags: 0

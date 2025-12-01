@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,17 +23,7 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-        gridManager = GetComponent<GridManager>();
-
         searchesFinished = false;
-        if (lockpickGame != null)
-        {
-            DeactivatePickMiniGame();
-        }
-        if (searchingGame != null)
-        {
-            DeactivateSearchMiniGame();
-        }
     }
     void Update()
     {
@@ -98,11 +89,11 @@ public class GameStateManager : MonoBehaviour
         if(lockpickGameFinished) return;
 
         lockpickGame.SetActive(true);
-        lockpickGameFinished = true;
     }
     public void DeactivatePickMiniGame()
     {
         //Debug.Log("deactivate");
+        lockpickGameFinished = true;
         lockpickGame.SetActive(false);
     }
 }

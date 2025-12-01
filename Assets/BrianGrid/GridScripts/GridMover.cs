@@ -100,7 +100,7 @@ public class GridMover : MonoBehaviour
             }
         }
 
-        foreach (Vector2 interactiveGridPos in gridManager.SearcjableTilesList)
+        foreach (Vector2 interactiveGridPos in gridManager.SearchableTilesList)
         {
             if (currentGridPos == interactiveGridPos)
             {

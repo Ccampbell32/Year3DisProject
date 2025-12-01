@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Renderer))]
 public class TileSelector : MonoBehaviour
@@ -70,5 +71,13 @@ public class TileSelector : MonoBehaviour
     {
         if (rend != null)
             rend.material.color = baseColor;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("wall"))
+        {
+            this.gameObject.IsDestroyed();
+        }
     }
 }

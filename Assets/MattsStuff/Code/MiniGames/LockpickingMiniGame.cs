@@ -8,6 +8,8 @@ public class LockpickingMiniGame : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private GameObject centreOfPick;
+    [Header("Game State Manager")]
+    [SerializeField] private GameStateManager gameStateManager;
     [Header("Canvas")]
     [SerializeField] private Image progressBar;
     [SerializeField] private Image breakBar;
@@ -163,9 +165,15 @@ public class LockpickingMiniGame : MonoBehaviour
                 WinText.SetActive(true);
                 if (LockPickWinEvent != null)
                     LockPickWinEvent();
-                    
+
                 if (LockPickWin != null)
                     LockPickWin();
+                    
+                // If DeactivatePickMiniGame should be static, make sure it's declared as static in GameStateManager:
+                // public static void DeactivatePickMiniGame() { ... }
+                gameStateManager.DeactivatePickMiniGame();
+                // If it should be called on an instance, use something like:
+                // FindObjectOfType<GameStateManager>().DeactivatePickMiniGame();
                 Invoke("FinishGame", 4f);
             }
         }

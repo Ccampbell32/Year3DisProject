@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
@@ -17,16 +19,18 @@ public class GridManager : MonoBehaviour
     [HideInInspector] public TileSelector[,] tiles;
 
     [Header("References")]
-    private GridMover currentGridMover;
+    [SerializeField] private GridMover currentGridMover;
     private Characters currentCharacter;
     [SerializeField] private GameObject currentCharacterObject;
 
     [SerializeField] private ChangeSelectedCharacter changeSelectedCharacter;
 
     [Header("Matts amazing stuff")]
-    [SerializeField] public List<Vector2> SearcjableTilesList = new List<Vector2>();
+    [SerializeField] public List<Vector2> SearchableTilesList = new List<Vector2>();
     [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
     [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
+    [SerializeField] public List<Vector2> Walltiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> Powertiles = new List<Vector2>();
     [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
 
     // Store world positions of each cell
@@ -39,9 +43,36 @@ public class GridManager : MonoBehaviour
 
     public void CollectLists()
     {
-        AllInteractableTiles.AddRange(SearcjableTilesList);
+        AllInteractableTiles.AddRange(SearchableTilesList);
         AllInteractableTiles.AddRange(Puzzletiles);
         AllInteractableTiles.AddRange(WeaponTile);
+    }
+
+    public void AddWallTile(string tileName)
+    {
+        GameObject tileObj = GameObject.Find(tileName);
+        if (tileObj != null)
+        {
+            Vector3 pos = tileObj.transform.position;
+            Vector2Int gridPos = GetClosestGridPosition(pos);
+            Walltiles.Add(new Vector2(gridPos.x, gridPos.y));
+        }
+    }
+
+    public void ReplaceWallTile()
+    {
+        foreach (Vector2 wallGridPos in Walltiles)
+        {
+            GameObject wallTileObj = tiles[(int)wallGridPos.x, (int)wallGridPos.y].gameObject;
+            Destroy(wallTileObj.GetComponent<WallColide>());
+            TileSelector selector = wallTileObj.GetComponent<TileSelector>();
+            if (selector != null)
+            {
+                selector.moveCost = 5;
+                selector.isWalkable = false;
+                selector.Highlight(Color.red);
+            }
+        }
     }
 
     private void GenerateGrid()
@@ -56,6 +87,8 @@ public class GridManager : MonoBehaviour
                 Vector3 worldPos = startPos + new Vector3(x * cellSize, 0, y * cellSize);
                 GameObject tileObj = Instantiate(normalTilePrefab, worldPos, Quaternion.identity, transform);
                 tileObj.name = $"Tile_{x}_{y}";
+                tileObj.AddComponent<BoxCollider>().isTrigger = true;
+                tileObj.AddComponent<WallColide>();
 
                 TileSelector selector = tileObj.GetComponent<TileSelector>();
                 if (selector == null)
@@ -72,7 +105,7 @@ public class GridManager : MonoBehaviour
                     }
                 }
 
-                foreach (Vector2 intGridPos in SearcjableTilesList)
+                foreach (Vector2 intGridPos in SearchableTilesList)
                 {
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
@@ -85,6 +118,14 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Weapon;
+                    }
+                }
+
+                foreach (Vector2 intGridPos in Powertiles)
+                {
+                    if (intGridPos.x == x && intGridPos.y == y)
+                    {
+                        tileObj.AddComponent<InteractiveTile>().tileType = TileType.Power;
                     }
                 }
 
@@ -130,12 +171,15 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 int distance = Mathf.Abs(x - center.x) + Mathf.Abs(y - center.y);
-                if (distance <= range)
+                //Debug.Log("Distance: " + distance  + " Center: " + center + " Tile: (" + x + "," + y + ")");
+                if (distance + tiles[x,y].moveCost <= range)
                 {
                     if (tiles[x, y] != null)
                     {
                         if (tiles[x, y].isWalkable && tiles[x, y].GetComponent<InteractiveTile>() == null)
+
                             tiles[x, y].Highlight(Color.cyan);
+
                         else if (tiles[x, y].GetComponent<InteractiveTile>() != null)
                             tiles[x, y].Highlight(Color.magenta);
                         else
@@ -154,6 +198,8 @@ public class GridManager : MonoBehaviour
             {
                 if (tiles[x, y] != null && tiles[x, y].GetComponent<InteractiveTile>() == null)
                     tiles[x, y].ResetColor();
+
+                tiles[x, y].moveCost = 1;
             }
         }
     }
@@ -182,39 +228,8 @@ public class GridManager : MonoBehaviour
     public void ReplaceInteractibleTile()
     {
         Vector2Int currentGridPos = currentGridMover.GetCurrentGridPos();
-
-        foreach (Vector2 intGridPos in Puzzletiles)
-        {
-            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
-            {
-                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
-                Destroy(tileObj.GetComponent<InteractiveTile>());
-                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
-                Puzzletiles.Remove(intGridPos);
-            }
-        }
-
-        foreach (Vector2 intGridPos in SearcjableTilesList)
-        {
-            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
-            {
-                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
-                Destroy(tileObj.GetComponent<InteractiveTile>());
-                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
-                SearcjableTilesList.Remove(intGridPos);
-            }
-        }
-
-        foreach (Vector2 intGridPos in WeaponTile)
-        {
-            if (intGridPos.x == currentGridPos.x && intGridPos.y == currentGridPos.y)
-            {
-                GameObject tileObj = tiles[(int)currentGridPos.x, (int)currentGridPos.y].gameObject;
-                Destroy(tileObj.GetComponent<InteractiveTile>());
-                tiles[(int)currentGridPos.x, (int)currentGridPos.y].ResetColor();
-                WeaponTile.Remove(intGridPos);
-            }
-        }
+        GameObject currentTileObj = tiles[currentGridPos.x, currentGridPos.y].gameObject;
+        Destroy(currentTileObj.GetComponent<InteractiveTile>());
 
     }
 

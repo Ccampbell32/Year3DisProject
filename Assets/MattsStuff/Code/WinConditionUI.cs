@@ -16,6 +16,10 @@ public class WinConditionUI : MonoBehaviour
     [SerializeField] private GameObject Bat;
     [SerializeField] private GameObject BatOutline;
 
+    [SerializeField] private GameObject Power;
+
+    [SerializeField] private GameObject PowerOutline;
+
     private bool gotKey;
     //private bool gotBat;
     private bool gotTire;

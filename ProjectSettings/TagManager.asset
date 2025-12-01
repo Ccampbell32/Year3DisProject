@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Icons
   - 'NotWalkable '
+  - Wall
   layers:
   - Default
   - TransparentFX

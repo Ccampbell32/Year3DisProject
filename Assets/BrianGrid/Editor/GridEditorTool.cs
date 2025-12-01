@@ -1,10 +1,15 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(GridManager))]
 public class GridEditorTool : Editor
 {
     private GridManager grid;
+
+    private List<Vector2> walledtiles = new List<Vector2>();
 
     private void OnEnable()
     {
@@ -91,6 +96,15 @@ public class GridEditorTool : Editor
         newSelector.isWalkable = walkable;
         newSelector.moveCost = moveCost;
 
+        if (prefab == grid.wallTilePrefab)
+            walledtiles.Add(new Vector2(x, y));
+        
         Debug.Log($"Painted {newTile.name} as {(ctrlHeld ? "Wall" : shiftHeld ? "Mud" : "Normal")}");
+    }
+
+    private void OnApplicationQuit()
+    {
+        string path = "Assets/MattsStuff/";
+        System.IO.File.WriteAllLines(path, walledtiles.ConvertAll(v => v.x + "," + v.y));
     }
 }

@@ -9,13 +9,12 @@ public class WinConditionUI : MonoBehaviour
     [SerializeField] private GameObject Tire;
     [SerializeField] private GameObject TireOutline;
 
+
     [SerializeField] private GameObject Keys;    
     [SerializeField] private GameObject KeysOutline;    
 
     [SerializeField] private GameObject Bat;
     [SerializeField] private GameObject BatOutline;
-
-    private int winCount; 
 
     private bool gotKey;
     //private bool gotBat;
@@ -28,7 +27,6 @@ public class WinConditionUI : MonoBehaviour
         //gotBat = false;
         gotTire = false;
 
-        winCount = 0;
         winText.SetActive(false);
 
         Tire.SetActive(false);
@@ -39,8 +37,8 @@ public class WinConditionUI : MonoBehaviour
         BatOutline.SetActive(true);
 
         LockpickingMiniGame.LockPickWin += GotKey;
-        //GameStateManager.SearchFinished += GotBat;
-        GameStateManager.WeaponGot += GotTire;
+        SearchingScript.SearchFinished += GotTire;
+        //GameStateManager.WeaponGot += GotBat;
     }
 
     void GotKey()
@@ -49,7 +47,6 @@ public class WinConditionUI : MonoBehaviour
         {
             Keys.SetActive(true);
             KeysOutline.SetActive(false);
-            winCount += 1;
             gotKey = true;
         }
     }
@@ -57,7 +54,6 @@ public class WinConditionUI : MonoBehaviour
     {
         Bat.SetActive(true);
         BatOutline.SetActive(false);
-        winCount += 1;
         //gotBat = true;
     }
     void GotTire()
@@ -66,14 +62,13 @@ public class WinConditionUI : MonoBehaviour
         {
             Tire.SetActive(true);
             TireOutline.SetActive(false);
-            winCount += 1;
             gotTire = true;
         }
         
     }
     void Update()
     {
-        if (winCount >= 4)
+        if (gotKey && gotTire)
         {
             winText.SetActive(true);
         }

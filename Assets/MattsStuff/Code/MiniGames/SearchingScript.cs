@@ -10,6 +10,9 @@ public class SearchingScript : MonoBehaviour
     [SerializeField] private GameStateManager gameStateManager;
 
     [SerializeField] private Image searchProgressBar;
+
+    public static event WinHandler SearchFinished;
+
     void Awake()
     {
         StartSearchCountdown();
@@ -23,11 +26,12 @@ public class SearchingScript : MonoBehaviour
     private IEnumerator SearchProgress()
     {
         isSearching = true;
-        Debug.Log("Searching...");
+        //Debug.Log("Searching...");
         yield return new WaitForSeconds(2f);
 
         isSearching = false;
-        Debug.Log("Search Complete");
+        //Debug.Log("Search Complete");
+        SearchFinished();
         gameStateManager.DeactivateSearchMiniGame();
         
     }

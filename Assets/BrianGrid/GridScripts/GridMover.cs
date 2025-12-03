@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Drawing;
 
 public class GridMover : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GridMover : MonoBehaviour
     [SerializeField] private GameObject puzzleIcon;
     [SerializeField] private GameObject searchableIcon;
     [SerializeField] private GameObject weaponIcon;
+    [SerializeField] private GameObject powerIcon;
 
     public void FreezeGridMoves()
     {
@@ -37,6 +39,7 @@ public class GridMover : MonoBehaviour
         puzzleIcon.SetActive(false);
         searchableIcon.SetActive(false);
         weaponIcon.SetActive(false);
+        powerIcon.SetActive(false);
 
         if (gridManager == null)
             gridManager = FindObjectOfType<GridManager>();
@@ -121,6 +124,18 @@ public class GridMover : MonoBehaviour
             else
             {
                 weaponIcon.SetActive(false);
+            }
+        }
+        foreach (Vector2 interactiveGridPos in gridManager.Powertiles)
+        {
+            if (currentGridPos == interactiveGridPos)
+            {
+                //Debug.Log("we here");
+                powerIcon.SetActive(true);
+            }
+            else
+            {
+                powerIcon.SetActive(false);
             }
         }
     }

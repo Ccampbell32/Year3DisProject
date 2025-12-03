@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.Mathematics;
 
 public class TurnManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class TurnManager : MonoBehaviour
     public void EndTurn()
     {
 
-        Debug.Log("Force ending turn.");
+        //Debug.Log("Force ending turn.");
         IsPlayerTurn = false;
 
         // Call enemy actions here
@@ -32,18 +33,15 @@ public class TurnManager : MonoBehaviour
 
     private void EnemyPhase()
     {
-        Debug.Log("Enemy turn started!");
-
-        // TODO: Add enemy movement logic here
-
+        //Debug.Log("Enemy turn started!");
         // When enemies finish:
-        Debug.Log("Enemy turn ended!");
+        //Debug.Log("Enemy turn ended!");
         StartPlayerTurn();
     }
 
     public void StartPlayerTurn()
     {
-        Debug.Log("Player turn started!");
+        //Debug.Log("Player turn started!");
         timeCountdown = turnTimeLimit;
         handToTurn.transform.localRotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, 0);
         StartCoroutine(StartCountdown());
@@ -52,14 +50,15 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator StartCountdown()
     {
+        Quaternion newAngle;
         while (timeCountdown > 0)
         {
-            Debug.Log("Countdown: " + timeCountdown);
-            handToTurn.transform.localRotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, (timeCountdown / turnTimeLimit) * -360f);
+            //Debug.Log("Countdown: " + timeCountdown);         
+            newAngle = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, (timeCountdown / turnTimeLimit) * -360f);
             yield return new WaitForSeconds(1.0f);
             timeCountdown--;
         }
-        Debug.Log("Turn time over!");
+        //Debug.Log("Turn time over!");
         EndTurn();
     }
 

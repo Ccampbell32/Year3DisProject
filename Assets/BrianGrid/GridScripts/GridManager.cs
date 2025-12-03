@@ -30,7 +30,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
     [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
     [SerializeField] public List<Vector2> Walltiles = new List<Vector2>();
-    [SerializeField] private List<Vector2> Powertiles = new List<Vector2>();
+    [SerializeField] public List<Vector2> Powertiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> EscapeTiles = new List<Vector2>();
     [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
 
     // Store world positions of each cell
@@ -227,6 +228,7 @@ public class GridManager : MonoBehaviour
     }
     public void ReplaceInteractibleTile()
     {
+        Debug.Log("replace");
         Vector2Int currentGridPos = currentGridMover.GetCurrentGridPos();
         GameObject currentTileObj = tiles[currentGridPos.x, currentGridPos.y].gameObject;
         Destroy(currentTileObj.GetComponent<InteractiveTile>());

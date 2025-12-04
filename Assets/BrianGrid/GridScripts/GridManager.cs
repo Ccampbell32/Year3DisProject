@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.Tilemaps;
+using Unity.VisualScripting;
 
 public class GridManager : MonoBehaviour
 {
@@ -20,33 +21,28 @@ public class GridManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GridMover currentGridMover;
-    private Characters currentCharacter;
+    private Characters currentFrozenCharacter;
+
     [SerializeField] private GameObject currentCharacterObject;
+    private GameObject poweredCurrentCharacterObj;
 
     [SerializeField] private ChangeSelectedCharacter changeSelectedCharacter;
 
-    [Header("Matts amazing stuff")]
+    [Header("Matts Amazing Tile Stuff")]
     [SerializeField] public List<Vector2> SearchableTilesList = new List<Vector2>();
     [SerializeField] public List<Vector2> WeaponTile = new List<Vector2>();
     [SerializeField] public List<Vector2> Puzzletiles = new List<Vector2>();
-    [SerializeField] public List<Vector2> Walltiles = new List<Vector2>();
     [SerializeField] public List<Vector2> Powertiles = new List<Vector2>();
-    [SerializeField] private List<Vector2> EscapeTiles = new List<Vector2>();
-    [SerializeField] private List<Vector2> AllInteractableTiles = new List<Vector2>();
+    [SerializeField] public List<Vector2> EscapeTiles = new List<Vector2>();
+    public List<Vector2> Walltiles = new List<Vector2>();
 
-    // Store world positions of each cell
-    private Vector3[,] gridPositions;
+    public static event FreezeTileMove freeze;
+
+    public static event FreezeTileMove unfreeze;
     private void Awake()
     {
-        CollectLists();
         GenerateGrid();
-    }
-
-    public void CollectLists()
-    {
-        AllInteractableTiles.AddRange(SearchableTilesList);
-        AllInteractableTiles.AddRange(Puzzletiles);
-        AllInteractableTiles.AddRange(WeaponTile);
+        currentFrozenCharacter = Characters.None;
     }
 
     public void AddWallTile(string tileName)
@@ -103,6 +99,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Puzzle;
+                        tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -111,6 +108,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Searchable;
+                        tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -119,6 +117,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Weapon;
+                        tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -127,8 +126,19 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Power;
+                        tileObj.AddComponent<Outline>();
                     }
                 }
+
+                foreach (Vector2 intGridPos in EscapeTiles)
+                {
+                    if (intGridPos.x == x && intGridPos.y == y)
+                    {
+                        tileObj.AddComponent<InteractiveTile>().tileType = TileType.Escape;
+                        tileObj.AddComponent<Outline>();
+                    }
+                }
+            
 
             }
         }
@@ -173,7 +183,7 @@ public class GridManager : MonoBehaviour
             {
                 int distance = Mathf.Abs(x - center.x) + Mathf.Abs(y - center.y);
                 //Debug.Log("Distance: " + distance  + " Center: " + center + " Tile: (" + x + "," + y + ")");
-                if (distance + tiles[x,y].moveCost <= range)
+                if (distance + tiles[x, y].moveCost <= range)
                 {
                     if (tiles[x, y] != null)
                     {
@@ -225,13 +235,102 @@ public class GridManager : MonoBehaviour
     {
         currentCharacterObject = changeSelectedCharacter.GetCurrentCharacterObject();
         currentGridMover = currentCharacterObject.GetComponent<GridMover>();
+
+        if (changeSelectedCharacter.GetCharacter() == currentFrozenCharacter)
+        {
+            freeze();
+            //Debug.Log("current char freeze");
+
+        }
+        else
+        {
+            unfreeze();
+            //Debug.Log("current char unfreeze");
+        }
     }
+
+    public void SetPoweredCharacter()
+    {
+        poweredCurrentCharacterObj = currentCharacterObject;
+    }
+
+    public GameStateManager GetPoweredGameStateManager()
+    {
+        SetCurrentCharacter();
+        if (poweredCurrentCharacterObj.gameObject.GetComponentInChildren<GameStateManager>() != null)
+        {
+            return poweredCurrentCharacterObj.gameObject.GetComponentInChildren<GameStateManager>();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public void FreezeCurrentGridMover()
+    {
+        //Debug.Log("freeze");
+        Characters currentCharacter;
+        currentCharacter = changeSelectedCharacter.GetCharacter();
+        switch (currentCharacter)
+        {
+            case Characters.Ashley:
+                currentFrozenCharacter = Characters.Ashley;
+                break;
+            case Characters.Joe:
+                currentFrozenCharacter = Characters.Joe;
+                break;
+        }
+
+        currentGridMover.FreezeGridMoves();
+
+        if (freeze != null)
+            freeze();
+
+    }
+
+    public void UnfreezeCurrentGridMover()
+    {
+        //Debug.Log("unfreeze");
+        currentFrozenCharacter = Characters.None;
+        Characters currentCharacter;
+        currentCharacter = changeSelectedCharacter.GetCharacter();
+
+        switch (currentCharacter)
+        {
+            case Characters.Ashley:
+                if (currentGridMover)
+                    currentGridMover.UnfreezeGridMoves();
+
+                unfreeze();
+                changeSelectedCharacter.SelectJoe();
+                SetCurrentCharacter();
+                currentGridMover.UnfreezeGridMoves();
+                unfreeze();
+                changeSelectedCharacter.SelectAshley();
+                SetCurrentCharacter();
+                break;
+            case Characters.Joe:
+                if (currentGridMover)
+                    currentGridMover.UnfreezeGridMoves();
+                unfreeze();
+                changeSelectedCharacter.SelectAshley();
+                SetCurrentCharacter();
+                currentGridMover.UnfreezeGridMoves();
+                unfreeze();
+                changeSelectedCharacter.SelectJoe();
+                SetCurrentCharacter();
+                break;
+        }
+    }
+
     public void ReplaceInteractibleTile()
     {
-        Debug.Log("replace");
+        //Debug.Log("replace");
         Vector2Int currentGridPos = currentGridMover.GetCurrentGridPos();
         GameObject currentTileObj = tiles[currentGridPos.x, currentGridPos.y].gameObject;
+        //Debug.Log("Destroying " + currentTileObj);
         Destroy(currentTileObj.GetComponent<InteractiveTile>());
+        ResetHighlights();
 
     }
 

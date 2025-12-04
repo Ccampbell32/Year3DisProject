@@ -23,6 +23,8 @@ public class TileSelector : MonoBehaviour
         isFreeze = false;
         LockpickingMiniGame.freezeGridMove += FreezeSelection;
         LockpickingMiniGame.unfreezeGridMoves += UnfreezeSelection;
+        GridManager.freeze += FreezeSelection;
+        GridManager.unfreeze += UnfreezeSelection;
     }
 
     private void FreezeSelection()

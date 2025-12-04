@@ -23,6 +23,10 @@ public class GridMover : MonoBehaviour
     [SerializeField] private GameObject weaponIcon;
     [SerializeField] private GameObject powerIcon;
 
+    [SerializeField] private GameStateManager ThisCharactersGSM;
+
+    private bool canExit;
+
     public void FreezeGridMoves()
     {
         isFreeze = true;
@@ -41,8 +45,7 @@ public class GridMover : MonoBehaviour
         weaponIcon.SetActive(false);
         powerIcon.SetActive(false);
 
-        if (gridManager == null)
-            gridManager = FindObjectOfType<GridManager>();
+        canExit = false;
 
         currentGridPos = gridManager.GetClosestGridPosition(transform.position);
         targetWorldPos = gridManager.GetWorldPosition(currentGridPos.x, currentGridPos.y);
@@ -52,6 +55,9 @@ public class GridMover : MonoBehaviour
         
         LockpickingMiniGame.freezeGridMove += FreezeGridMoves;
         LockpickingMiniGame.unfreezeGridMoves += UnfreezeGridMoves;  
+        GridManager.freeze += FreezeGridMoves;
+        GridManager.unfreeze += UnfreezeGridMoves;
+        WinConditionUI.CanLeave += SetEscape;
     }
 
     private void Update()
@@ -111,6 +117,7 @@ public class GridMover : MonoBehaviour
             }
             else
             {
+                ThisCharactersGSM.DeactivateSearchMiniGame();
                 searchableIcon.SetActive(false);
             }
         }
@@ -126,17 +133,34 @@ public class GridMover : MonoBehaviour
                 weaponIcon.SetActive(false);
             }
         }
+
+        bool isActive = false; 
+
         foreach (Vector2 interactiveGridPos in gridManager.Powertiles)
         {
-            if (currentGridPos == interactiveGridPos)
+            if (currentGridPos == interactiveGridPos && !isActive)
             {
-                //Debug.Log("we here");
+                isActive = true;
                 powerIcon.SetActive(true);
             }
-            else
+            else if (!isActive)
             {
                 powerIcon.SetActive(false);
             }
         }
+        foreach (Vector2 interactiveGridPos in gridManager.EscapeTiles)
+        {
+            if (currentGridPos == interactiveGridPos && canExit)
+            {
+                Debug.Log("on Escape and can");
+                gridManager.ReplaceInteractibleTile();
+                ThisCharactersGSM.CharacterEscape();            
+            }
+        }
+    }
+    private void SetEscape()
+    {
+        Debug.Log("escape allowed");
+        canExit = true;
     }
 }

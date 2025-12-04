@@ -2,10 +2,14 @@
 using System.Collections;
 using Unity.VisualScripting;
 using Unity.Mathematics;
+using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
+    [SerializeField] private LockpickingMiniGame lockpickingMiniGame;
+    [SerializeField] private List<SearchingScript> searchingScripts;
+    [SerializeField] private PowerScript powerScript;
 
     public bool IsPlayerTurn = true;
 
@@ -26,6 +30,13 @@ public class TurnManager : MonoBehaviour
 
         //Debug.Log("Force ending turn.");
         IsPlayerTurn = false;
+        lockpickingMiniGame.FinishGame();
+        foreach (SearchingScript searchingScript in searchingScripts)
+        {
+          searchingScript.CancleSearch(); 
+        }
+
+        powerScript.CanclePower();
 
         // Call enemy actions here
         EnemyPhase();
@@ -55,6 +66,7 @@ public class TurnManager : MonoBehaviour
         {
             //Debug.Log("Countdown: " + timeCountdown);         
             newAngle = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, (timeCountdown / turnTimeLimit) * -360f);
+            handToTurn.transform.localRotation = Quaternion.Lerp(Quaternion.identity, newAngle, 1f);
             yield return new WaitForSeconds(1.0f);
             timeCountdown--;
         }

@@ -4,6 +4,7 @@ public enum Characters
 {
     Ashley,
     Joe,
+    None
 }
 public class ChangeSelectedCharacter : MonoBehaviour
 {
@@ -46,7 +47,6 @@ public class ChangeSelectedCharacter : MonoBehaviour
         gridMover = currentCharacter.GetComponent<GridMover>();
         gridManager.SetCurrentCharacter();
 
-        gridMover.UnfreezeGridMoves();
         gridManager.ResetHighlights();
 
         mainCamera.transform.SetParent(currentCharacter.transform);
@@ -62,21 +62,25 @@ public class ChangeSelectedCharacter : MonoBehaviour
             mainCamera.transform.localPosition = Vector3.Lerp(mainCamera.transform.localPosition, targetPos, Time.deltaTime);
             yield return null;
         }
+        gridMover.UnfreezeGridMoves();
     }
 
     public void SelectAshley()
     {
         character = Characters.Ashley;
-        ChangeCharacter();
     }
     public void SelectJoe()
     {
         character = Characters.Joe;
-        ChangeCharacter();
     }
 
     public GameObject GetCurrentCharacterObject()
     {
         return currentCharacter;
+    }
+
+    public Characters GetCharacter()
+    {
+        return character;
     }
 }

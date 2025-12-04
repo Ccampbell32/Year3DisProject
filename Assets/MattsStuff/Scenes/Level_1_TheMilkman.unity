@@ -3415,6 +3415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 375892803}
+  - component: {fileID: 375892804}
   m_Layer: 0
   m_Name: Icons
   m_TagString: Untagged
@@ -3441,6 +3442,28 @@ Transform:
   - {fileID: 4113929311336541366}
   m_Father: {fileID: 1400393117}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &375892804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375892802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e2a16f593e0f34eaac474f22616fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconTagName: Icons
+  puzzleIconName: {fileID: 500675064}
+  searchableIconName: {fileID: 1630618689}
+  weaponIconName: {fileID: 1951715201}
+  powerIconName: {fileID: 4113929311336896726}
+  lockpickGame: {fileID: 1481287181}
+  searchingGame: {fileID: 469862305}
+  powerGame: {fileID: 2038407903}
+  gridManager: {fileID: 997777503}
+  powerScript: {fileID: 2038407905}
 --- !u!1 &410470607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,7 +3883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce158ccec4973bc43b336cc05d4c7302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStateManager: {fileID: 997777504}
+  gameStateManager: {fileID: 375892804}
   searchProgressBar: {fileID: 629353913}
 --- !u!1 &474343197
 GameObject:
@@ -9833,7 +9856,7 @@ GameObject:
   - component: {fileID: 554108754}
   m_Layer: 0
   m_Name: BatteryIcon
-  m_TagString: Untagged
+  m_TagString: Icons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11731,6 +11754,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1481287185}
+  - {fileID: 2038407904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971039654
@@ -11950,7 +11974,6 @@ GameObject:
   m_Component:
   - component: {fileID: 997777502}
   - component: {fileID: 997777503}
-  - component: {fileID: 997777504}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -12006,28 +12029,6 @@ MonoBehaviour:
   - {x: 0, y: 2}
   EscapeTiles: []
   AllInteractableTiles: []
---- !u!114 &997777504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997777500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e2a16f593e0f34eaac474f22616fcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconTagName: Icons
-  puzzleIconName: {fileID: 296565001711432856}
-  searchableIconName: {fileID: 2247522619998274429}
-  weaponIconName: {fileID: 1814385603202957781}
-  powerIconName: {fileID: 0}
-  lockpickGame: {fileID: 1481287181}
-  searchingGame: {fileID: 1916539366}
-  powerGame: {fileID: 0}
-  gridManager: {fileID: 997777503}
-  powerScript: {fileID: 0}
 --- !u!1 &1001419306
 GameObject:
   m_ObjectHideFlags: 0
@@ -12691,6 +12692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152940806}
+  - component: {fileID: 1152940807}
   m_Layer: 0
   m_Name: Icons
   m_TagString: Untagged
@@ -12717,6 +12719,28 @@ Transform:
   - {fileID: 554108751}
   m_Father: {fileID: 543450652071137803}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1152940807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152940805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e2a16f593e0f34eaac474f22616fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconTagName: Icons
+  puzzleIconName: {fileID: 296565001711432856}
+  searchableIconName: {fileID: 2247522619998274429}
+  weaponIconName: {fileID: 1814385603202957781}
+  powerIconName: {fileID: 554108750}
+  lockpickGame: {fileID: 1481287181}
+  searchingGame: {fileID: 1916539366}
+  powerGame: {fileID: 2038407903}
+  gridManager: {fileID: 997777503}
+  powerScript: {fileID: 2038407905}
 --- !u!1 &1169451758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13910,7 +13934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfPick: {fileID: 2143445644}
-  gameStateManager: {fileID: 997777504}
+  gameStateManager: {fileID: 0}
   progressBar: {fileID: 669693486}
   breakBar: {fileID: 496244221}
   WinText: {fileID: 290706662}
@@ -16158,7 +16182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce158ccec4973bc43b336cc05d4c7302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStateManager: {fileID: 997777504}
+  gameStateManager: {fileID: 1152940807}
   searchProgressBar: {fileID: 1749766023}
 --- !u!1 &1922839167
 GameObject:
@@ -18842,6 +18866,50 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2038407903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038407904}
+  - component: {fileID: 2038407905}
+  m_Layer: 0
+  m_Name: PowerGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2038407904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038407903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 952219247}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2038407905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038407903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291ba70f9146b8e40abf1a92b2c9c1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042632821
 GameObject:
   m_ObjectHideFlags: 0
@@ -34974,7 +35042,7 @@ GameObject:
   - component: {fileID: 4113929311339965655}
   m_Layer: 0
   m_Name: BatteryIcon
-  m_TagString: Untagged
+  m_TagString: Icons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

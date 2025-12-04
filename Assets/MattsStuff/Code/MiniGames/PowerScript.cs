@@ -12,7 +12,7 @@ public class PowerScript : MonoBehaviour
     private bool powerOn;
 
 
-    private void Start()
+    private void Awake()
     {
         ResetSwitches();
     }

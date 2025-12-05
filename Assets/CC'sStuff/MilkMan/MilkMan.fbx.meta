@@ -8,7 +8,7 @@ ModelImporter:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -80,27 +80,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: MilkMan(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Camera
-      parentName: MilkMan(Clone)
-      position: {x: -7.3588915, y: 4.958309, z: 6.925791}
-      rotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
-      scale: {x: 100, y: 100.00001, z: 99.99999}
-    - name: Light
-      parentName: MilkMan(Clone)
-      position: {x: -4.0762453, y: 11.694769, z: -1.005454}
-      rotation: {x: 0.52327543, y: -0.34203392, z: 0.72694236, w: 0.28416622}
-      scale: {x: 100.00001, y: 100, z: 100}
-    - name: MilkMan
-      parentName: MilkMan(Clone)
-      position: {x: -0.005350514, y: -1.1829579, z: 0.38979128}
-      rotation: {x: -0.7071069, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 100, y: 100, z: 100}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -111,7 +91,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

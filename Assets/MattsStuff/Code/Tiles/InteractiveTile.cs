@@ -1,13 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class InteractiveTile : MonoBehaviour
-{
-    //makes tiles interactive
-    [SerializeField] private Renderer rend;
-    [SerializeField] private Collider tileCollider;
-    [SerializeField] private GameObject player;
-
     public enum TileType
     {
         Puzzle,
@@ -17,6 +10,12 @@ public class InteractiveTile : MonoBehaviour
         Power,
 
     }
+public class InteractiveTile : MonoBehaviour
+{
+    //makes tiles interactive
+    [SerializeField] private Renderer rend;
+    [SerializeField] private Collider tileCollider;
+    [SerializeField] private GameObject player;
 
     [SerializeField] public TileType tileType;
     private Color interactiveColor = Color.magenta;

@@ -15,7 +15,7 @@ public class AStarManager : MonoBehaviour
     {
         List<Node> openSet = new List<Node>();
 
-        foreach(Node n in FindObjectsOfType<Node>())
+        foreach(Node n in AllNodes())
         {
             n.gScore = float.MaxValue;
         }
@@ -81,7 +81,7 @@ public class AStarManager : MonoBehaviour
         Node foundNode = null;
         float minDistance = float.MaxValue;
 
-        foreach(Node node in FindObjectsOfType<Node>())
+        foreach(Node node in AllNodes())
         {
             float currentDistance = Vector2.Distance(pos, node.transform.position);
 
@@ -100,7 +100,7 @@ public class AStarManager : MonoBehaviour
         Node foundNode = null;
         float maxDistance = default;
 
-        foreach (Node node in FindObjectsOfType<Node>())
+        foreach (Node node in AllNodes())
         {
             float currentDistance = Vector2.Distance(pos, node.transform.position);
             if(currentDistance > maxDistance)

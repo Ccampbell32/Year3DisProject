@@ -1,17 +1,22 @@
 using System;
 using System.Collections;
-using UnityEngine;   
+using UnityEngine;
 using UnityEngine.UI;
 
 
 public class SearchingScript : MonoBehaviour
 {
     private bool isSearching;
+    private bool isCancled;
     [SerializeField] private GameStateManager gameStateManager;
 
     [SerializeField] private Image searchProgressBar;
-    void Awake()
+    public static event WinHandler SearchFinished;
+
+    void OnEnable()
     {
+        Debug.Log("awake");
+        isCancled = false;
         StartSearchCountdown();
         searchProgressBar.fillAmount = 0f;
     }
@@ -23,19 +28,37 @@ public class SearchingScript : MonoBehaviour
     private IEnumerator SearchProgress()
     {
         isSearching = true;
+        searchProgressBar.fillAmount = 0f;
+        //Debug.Log("Searching...");
         yield return new WaitForSeconds(2f);
 
         isSearching = false;
-        gameStateManager.DeactivateMiniGame();
-        
+        if (isCancled)
+        {
+            gameStateManager.DeactivateSearchMiniGame();
+        }
+        else
+        {
+            if (SearchFinished != null)
+            {
+                SearchFinished();
+            }
+            gameStateManager.CompleteSearchMiniGame();
+        }
+
     }
 
     void Update()
     {
-        if (isSearching)
+        if (isSearching && !isCancled)
         {
-            searchProgressBar.fillAmount += 0.0007f;
+            searchProgressBar.fillAmount += 0.0014f;
         }
     }
 
+    public void CancleSearch()
+    {
+        isCancled = true;
+        isSearching = false;
+    }
 }

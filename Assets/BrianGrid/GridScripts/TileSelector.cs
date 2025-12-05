@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Renderer))]
 public class TileSelector : MonoBehaviour
@@ -11,10 +14,26 @@ public class TileSelector : MonoBehaviour
     [HideInInspector] public bool isWalkable = true;
     [HideInInspector] public int moveCost = 1;
 
+    private bool isFreeze;
+
     private void Awake()
     {
         rend = GetComponent<Renderer>();
         baseColor = rend.material.color;
+        isFreeze = false;
+        LockpickingMiniGame.freezeGridMove += FreezeSelection;
+        LockpickingMiniGame.unfreezeGridMoves += UnfreezeSelection;
+        GridManager.freeze += FreezeSelection;
+        GridManager.unfreeze += UnfreezeSelection;
+    }
+
+    private void FreezeSelection()
+    {
+        isFreeze = true;
+    }
+    private void UnfreezeSelection()
+    {
+        isFreeze = false;
     }
 
     public void Init(GridManager manager, int gridX, int gridY, bool walkable, int cost)
@@ -28,7 +47,19 @@ public class TileSelector : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gridManager == null) return;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            //Debug.Log("Clicked on UI, ignoring tile click.");
+            return;
+        }
+
+        if (gridManager == null || isFreeze)
+        {
+            //Debug.Log("Tile selection is frozen or GridManager is null.");
+            return;
+        }
+
+        //Debug.Log($"Tile at ({x}, {y}) clicked.");
         gridManager.OnTileClicked(x, y);
     }
 
@@ -42,5 +73,13 @@ public class TileSelector : MonoBehaviour
     {
         if (rend != null)
             rend.material.color = baseColor;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("wall"))
+        {
+            this.gameObject.IsDestroyed();
+        }
     }
 }

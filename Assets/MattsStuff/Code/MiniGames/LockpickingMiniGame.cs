@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
+
 public class LockpickingMiniGame : MonoBehaviour
 {
-
-
     [Header("Objects")]
     [SerializeField] private GameObject centreOfPick;
+    [Header("Game State Manager")]
+    [SerializeField] private GameStateManager anyGameStateManager;
     [Header("Canvas")]
     [SerializeField] private Image progressBar;
     [SerializeField] private Image breakBar;
@@ -28,7 +29,10 @@ public class LockpickingMiniGame : MonoBehaviour
     [SerializeField] private float breakThreshold;
     [SerializeField] private float unlockThreshold;
 
-    private float percentageTurn; //0-1
+    [Header("Timers")]
+    [SerializeField][Range(0.5f, 5f)] private float finishTime;
+
+    private float percentageTurn; //0-S1
 
     private Vector3 screenPosition;
     private float centreOfScreen;
@@ -40,6 +44,7 @@ public class LockpickingMiniGame : MonoBehaviour
     public static event FreezeHandler freezeGridMove;
     public static event FreezeHandler unfreezeGridMoves;
     public static event FreezeHandler LockPickWin;
+    public static event WinHandler LockPickWinEvent;
 
     [Header("Audio Animitor")]
     [SerializeField] private Animator animitor;
@@ -99,7 +104,7 @@ public class LockpickingMiniGame : MonoBehaviour
             //Debug.Log("Broke");
             LostText.SetActive(true);
             unfreezeGridMoves();
-            Invoke("FinishGame", 4f);
+            Invoke("FinishGame", finishTime);
         }
 
         else if (isPicking && currentAngle >= greenSpotAngle - FullIndicatorDistance && currentAngle <= greenSpotAngle + FullIndicatorDistance)
@@ -158,9 +163,10 @@ public class LockpickingMiniGame : MonoBehaviour
             {
                 gameOver = true;
                 WinText.SetActive(true);
-                if(LockPickWin != null)
-                LockPickWin();
-                Invoke("FinishGame", 4f);
+
+                anyGameStateManager.CompletePickMiniGame();
+
+                Invoke("FinishGame", finishTime);
             }
         }
 
@@ -200,9 +206,9 @@ public class LockpickingMiniGame : MonoBehaviour
     }
 
     private void GameSetUp()
-    {        
+    {
         gameOver = false;
-        isPicking = false;  
+        isPicking = false;
         //Debug.Log("New Green Spot Angle: " + greenSpotAngle);
         unlockProgress = 0f;
         progressBar.fillAmount = 0f;
@@ -214,10 +220,12 @@ public class LockpickingMiniGame : MonoBehaviour
         WinText.SetActive(false);
         LostText.SetActive(false);
     }
-    private void FinishGame()
+    public void FinishGame()
     {
-        this.gameObject.SetActive(false);
+        if(unfreezeGridMoves != null)
         unfreezeGridMoves();
+        
+        this.gameObject.SetActive(false);
 
     }
 }

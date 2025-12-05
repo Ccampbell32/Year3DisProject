@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
-using Unity.Mathematics;
 using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
+
     [SerializeField] private LockpickingMiniGame lockpickingMiniGame;
     [SerializeField] private List<SearchingScript> searchingScripts;
     [SerializeField] private PowerScript powerScript;
 
-    public bool IsPlayerTurn = true;
-
-    [SerializeField][Range(10, 60)] private float turnTimeLimit;
-
     [SerializeField] private GameObject handToTurn;
+
+    [SerializeField]
+    [Range(10, 60)]
+    private float turnTimeLimit = 30f;
+
+    public bool IsPlayerTurn = true;
 
     private float timeCountdown;
 
@@ -25,53 +26,95 @@ public class TurnManager : MonoBehaviour
         StartPlayerTurn();
     }
 
+    // ----------------------------
+    // Called when Player Ends Turn
+    // ----------------------------
     public void EndTurn()
     {
-
-        //Debug.Log("Force ending turn.");
         IsPlayerTurn = false;
+
+        // Cancel all player actions
         lockpickingMiniGame.FinishGame();
+
         foreach (SearchingScript searchingScript in searchingScripts)
-        {
-          searchingScript.CancleSearch(); 
-        }
+            searchingScript.CancleSearch();
 
         powerScript.CanclePower();
 
-        // Call enemy actions here
-        EnemyPhase();
+        // Start enemy actions
+        StartCoroutine(EnemyTurnRoutine());
     }
 
-    private void EnemyPhase()
+    // ----------------------------
+    // Enemy Turn
+    // ----------------------------
+    private IEnumerator EnemyTurnRoutine()
     {
-        //Debug.Log("Enemy turn started!");
-        // When enemies finish:
-        //Debug.Log("Enemy turn ended!");
+        EnemyMover[] enemies = FindObjectsOfType<EnemyMover>();
+
+        // Find player grid pos (first player in scene)
+        PlayerHealth[] players = FindObjectsOfType<PlayerHealth>();
+        Vector2Int playerPos = Vector2Int.zero;
+
+        if (players.Length > 0)
+        {
+            GridManager grid = FindObjectOfType<GridManager>();
+            playerPos = grid.GetClosestGridPosition(players[0].transform.position);
+        }
+
+        // Each enemy takes its turn
+        foreach (EnemyMover e in enemies)
+        {
+            e.TakeTurn(playerPos);
+
+            // Wait until enemy finishes movement
+            while (e.IsMoving)
+                yield return null;
+
+            yield return new WaitForSeconds(0.1f); // small delay
+        }
+
+        // End enemy turn → start player turn
         StartPlayerTurn();
     }
 
+    // ----------------------------
+    // Player Turn
+    // ----------------------------
     public void StartPlayerTurn()
     {
-        //Debug.Log("Player turn started!");
-        timeCountdown = turnTimeLimit;
-        handToTurn.transform.localRotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, 0);
-        StartCoroutine(StartCountdown());
         IsPlayerTurn = true;
+
+        timeCountdown = turnTimeLimit;
+
+        // Reset UI clock hand rotation
+        handToTurn.transform.localRotation =
+            Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, 0);
+
+        StartCoroutine(StartCountdown());
     }
 
+    // ----------------------------
+    // Countdown Timer
+    // ----------------------------
     public IEnumerator StartCountdown()
     {
         Quaternion newAngle;
+
         while (timeCountdown > 0)
         {
-            //Debug.Log("Countdown: " + timeCountdown);         
-            newAngle = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, (timeCountdown / turnTimeLimit) * -360f);
-            handToTurn.transform.localRotation = Quaternion.Lerp(Quaternion.identity, newAngle, 1f);
+            newAngle = Quaternion.Euler(
+                Quaternion.identity.x,
+                Quaternion.identity.y,
+                (timeCountdown / turnTimeLimit) * -360f);
+
+            handToTurn.transform.localRotation =
+                Quaternion.Lerp(Quaternion.identity, newAngle, 1f);
+
             yield return new WaitForSeconds(1.0f);
             timeCountdown--;
         }
-        //Debug.Log("Turn time over!");
-        EndTurn();
-    }
 
+        EndTurn(); // times up
+    }
 }

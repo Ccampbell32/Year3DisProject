@@ -23,8 +23,6 @@ public class AStarPathfinding : MonoBehaviour
         {
             this.x = x;
             this.y = y;
-
-            // IMPORTANT FIX
             gCost = int.MaxValue;
         }
     }
@@ -64,16 +62,18 @@ public class AStarPathfinding : MonoBehaviour
             {
                 if (closedList.Contains(neighbour)) continue;
 
-                if (!grid.IsValidTile(neighbour.x, neighbour.y)) continue;
+                if (!grid.IsValidTile(neighbour.x, neighbour.y))
+                    continue;
 
-                int costToNeighbour =
-                    current.gCost +
+                int costToNeighbour = current.gCost +
                     grid.tiles[neighbour.x, neighbour.y].moveCost;
 
-                if (costToNeighbour < neighbour.gCost || !openList.Contains(neighbour))
+                if (costToNeighbour < neighbour.gCost)
                 {
                     neighbour.gCost = costToNeighbour;
-                    neighbour.hCost = Mathf.Abs(neighbour.x - target.x) + Mathf.Abs(neighbour.y - target.y);
+                    neighbour.hCost = Mathf.Abs(neighbour.x - target.x) +
+                                      Mathf.Abs(neighbour.y - target.y);
+
                     neighbour.parent = current;
 
                     if (!openList.Contains(neighbour))

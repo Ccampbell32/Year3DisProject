@@ -13,6 +13,9 @@ public class EnemyMover : MonoBehaviour
     private int pathIndex = 0;
     private bool isMoving = false;
 
+    // TurnManager checks this
+    public bool IsMoving => isMoving;
+
     private void Start()
     {
         grid = FindObjectOfType<GridManager>();
@@ -21,17 +24,13 @@ public class EnemyMover : MonoBehaviour
         currentGridPos = grid.GetClosestGridPosition(transform.position);
     }
 
-    // ---------------------------------------------------------
-    // Called by TurnManager during ENEMY TURN
-    // ---------------------------------------------------------
+    // Called by TurnManager
     public void TakeTurn(Vector2Int playerPos)
     {
         MoveTowardsPlayer(playerPos);
     }
 
-    // ---------------------------------------------------------
-    // Pathfind toward the player
-    // ---------------------------------------------------------
+    // Calculate path
     public void MoveTowardsPlayer(Vector2Int playerPos)
     {
         currentPath = pathfinder.FindPath(currentGridPos, playerPos);
@@ -43,16 +42,20 @@ public class EnemyMover : MonoBehaviour
         }
     }
 
-    // ---------------------------------------------------------
-    // Move along the calculated path
-    // ---------------------------------------------------------
+    // Move along path
     private void Update()
     {
         if (!isMoving || currentPath == null || pathIndex >= currentPath.Count)
             return;
 
-        Vector3 targetPos = grid.GetWorldPosition(currentPath[pathIndex].x, currentPath[pathIndex].y);
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+        Vector3 targetPos =
+            grid.GetWorldPosition(currentPath[pathIndex].x, currentPath[pathIndex].y);
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPos,
+            moveSpeed * Time.deltaTime
+        );
 
         if (Vector3.Distance(transform.position, targetPos) < 0.05f)
         {

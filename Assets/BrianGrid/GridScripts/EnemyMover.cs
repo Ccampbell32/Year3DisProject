@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class EnemyMover : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class EnemyMover : MonoBehaviour
     private int pathIndex = 0;
     private bool isMoving = false;
 
+    [SerializeField] private List<GameObject> players;
+
     private void Start()
     {
         grid = FindObjectOfType<GridManager>();
-        pathfinder = FindObjectOfType<AStarPathfinding>();
+        //pathfinder = FindObjectOfType<AStarPathfinding>();
 
         currentGridPos = grid.GetClosestGridPosition(transform.position);
     }
@@ -24,9 +27,24 @@ public class EnemyMover : MonoBehaviour
     // ---------------------------------------------------------
     // Called by TurnManager during ENEMY TURN
     // ---------------------------------------------------------
-    public void TakeTurn(Vector2Int playerPos)
+    public void TakeTurn()
     {
-        MoveTowardsPlayer(playerPos);
+        if(UnityEngine.Random.Range(0,10)%2 == 0)
+        {
+            Vector2Int moveToTile = new Vector2Int();
+            moveToTile.x = (int)players[0].gameObject.transform.position.x; 
+            moveToTile.y = (int)players[0].gameObject.transform.position.y; 
+
+            MoveTowardsPlayer(moveToTile);
+        }
+        else
+        {
+            Vector2Int moveToTile = new Vector2Int();
+            moveToTile.x = (int)players[1].gameObject.transform.position.x; 
+            moveToTile.y = (int)players[1].gameObject.transform.position.y; 
+
+            MoveTowardsPlayer(moveToTile);
+        }
     }
 
     // ---------------------------------------------------------

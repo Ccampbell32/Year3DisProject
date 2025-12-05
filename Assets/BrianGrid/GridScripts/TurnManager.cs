@@ -10,6 +10,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private LockpickingMiniGame lockpickingMiniGame;
     [SerializeField] private List<SearchingScript> searchingScripts;
     [SerializeField] private PowerScript powerScript;
+    [SerializeField] private EnemyMover enemyMover;
 
     public bool IsPlayerTurn = true;
 
@@ -47,7 +48,7 @@ public class TurnManager : MonoBehaviour
         //Debug.Log("Enemy turn started!");
         // When enemies finish:
         //Debug.Log("Enemy turn ended!");
-        StartPlayerTurn();
+        enemyMover.TakeTurn();
     }
 
     public void StartPlayerTurn()

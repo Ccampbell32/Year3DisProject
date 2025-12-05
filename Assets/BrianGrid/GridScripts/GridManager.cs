@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine.Tilemaps;
-using Unity.VisualScripting;
+
 
 public class GridManager : MonoBehaviour
 {
@@ -16,7 +13,6 @@ public class GridManager : MonoBehaviour
     public GameObject normalTilePrefab;
     public GameObject mudTilePrefab;
     public GameObject wallTilePrefab;
-
     [HideInInspector] public TileSelector[,] tiles;
 
     [Header("References")]
@@ -99,7 +95,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Puzzle;
-                        tileObj.AddComponent<Outline>();
+                        //tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -108,7 +104,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Searchable;
-                        tileObj.AddComponent<Outline>();
+                        //tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -117,7 +113,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Weapon;
-                        tileObj.AddComponent<Outline>();
+                        //tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -126,7 +122,7 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Power;
-                        tileObj.AddComponent<Outline>();
+                        //tileObj.AddComponent<Outline>();
                     }
                 }
 
@@ -135,10 +131,10 @@ public class GridManager : MonoBehaviour
                     if (intGridPos.x == x && intGridPos.y == y)
                     {
                         tileObj.AddComponent<InteractiveTile>().tileType = TileType.Escape;
-                        tileObj.AddComponent<Outline>();
+                        //tileObj.AddComponent<Outline>();
                     }
                 }
-            
+
 
             }
         }
@@ -170,10 +166,25 @@ public class GridManager : MonoBehaviour
 
         if (!IsValidTile(x, y))
             return;
+        Vector2Int center = currentGridMover.GetCurrentGridPos();
 
-        currentGridMover.MoveToTile(x, y);
+        for (int v = 0; v < width; v++)
+        {
+            for (int w = 0; w < height; w++)
+            {
+                int distance = Mathf.Abs(v - center.x) + Mathf.Abs(y - center.y);
+                if (distance + tiles[v, w].moveCost <= 3 && v == x && y ==w)
+                {
+                    currentGridMover.MoveToTile(x, y);
+                    return;
+                }
+                else
+                {
+                    //Debug.Log("out range: " + distance);
+                }
+            }
+        }
     }
-
     public void HighlightRange(Vector2Int center, int range)
     {
         ClearHighlights();

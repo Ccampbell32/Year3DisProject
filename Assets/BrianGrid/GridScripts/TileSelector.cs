@@ -52,8 +52,10 @@ public class TileSelector : MonoBehaviour
             //Debug.Log("Clicked on UI, ignoring tile click.");
             return;
         }
+        
+        
 
-        if (gridManager == null || isFreeze)
+        if (gridManager == null || isFreeze )
         {
             //Debug.Log("Tile selection is frozen or GridManager is null.");
             return;

@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Drawing;
-using UnityEditor.IMGUI.Controls;
-
 public class GridMover : MonoBehaviour
 {
     [Header("Movement Settings")]

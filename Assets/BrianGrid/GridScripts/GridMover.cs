@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Drawing;
+using UnityEditor.IMGUI.Controls;
 
 public class GridMover : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GridMover : MonoBehaviour
 
     private List<Vector2> interactbleTiles;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
     [Header("Matt's amazing stuff")]
     [SerializeField] private bool isFreeze;
     [SerializeField] private GameObject puzzleIcon;
@@ -24,6 +27,8 @@ public class GridMover : MonoBehaviour
     [SerializeField] private GameObject powerIcon;
 
     [SerializeField] private GameStateManager ThisCharactersGSM;
+
+    [SerializeField] private GameObject MeshObj;
 
     private bool canExit;
 
@@ -72,10 +77,18 @@ public class GridMover : MonoBehaviour
         {
             //Debug.Log("moving");
             transform.position = Vector3.MoveTowards(transform.position, targetWorldPos, moveSpeed * Time.deltaTime);
+            Vector3 direction = (targetWorldPos - transform.position).normalized;
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                MeshObj.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
+            }
+
             if (Vector3.Distance(transform.position, targetWorldPos) < 0.01f)
             {
                 transform.position = targetWorldPos;
                 isMoving = false;
+                //animator.SetBool("isWalk",false);
                 gridManager.OnPlayerArrivedAtTile(currentGridPos);
             }
         }
@@ -89,6 +102,7 @@ public class GridMover : MonoBehaviour
         targetWorldPos = gridManager.GetWorldPosition(x, y);
         currentGridPos = new Vector2Int(x, y);
         isMoving = true;
+        //animator.SetBool("isWalk",true);
         gridManager.SetPlayerPosition(currentGridPos);
         CheckForInteractive(currentGridPos);
     }
@@ -117,7 +131,6 @@ public class GridMover : MonoBehaviour
             }
             else
             {
-                ThisCharactersGSM.DeactivateSearchMiniGame();
                 searchableIcon.SetActive(false);
             }
         }

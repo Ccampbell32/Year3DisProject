@@ -137,7 +137,7 @@ public class GameStateManager : MonoBehaviour
     }
     public void DeactivateSearchMiniGame()
     {
-        Debug.Log("deactivate Search");
+        //Debug.Log("deactivate Search");
         searchingGame.SetActive(false);
     }
     public void CompleteSearchMiniGame()

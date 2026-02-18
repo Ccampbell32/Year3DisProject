@@ -3,12 +3,16 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [Header("Interaction")]
     public float interactRange = 2f;
     public TMP_Text interactText;
 
+    [Header("Player State")]
     [HideInInspector] public bool holdingTrash;
+    [HideInInspector] public bool holdingMop;
 
     Camera cam;
+    Interactable currentInteractable;
 
     void Start()
     {
@@ -18,7 +22,14 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        CheckInteraction();
+        HandleInput();
+    }
+
+    // -------- CHECK OBJECT --------
+    void CheckInteraction()
+    {
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactRange))
@@ -27,23 +38,40 @@ public class PlayerInteract : MonoBehaviour
 
             if (interactable != null)
             {
-                // Convert world position to screen position
-                Vector3 screenPos = cam.WorldToScreenPoint(hit.collider.bounds.center);
+                currentInteractable = interactable;
 
-                interactText.transform.position = screenPos + Vector3.up * 30f;
+                Vector3 screenPos =
+                    cam.WorldToScreenPoint(hit.collider.bounds.center);
+
+                interactText.transform.position =
+                    screenPos + Vector3.up * 30f;
 
                 interactText.text = interactable.GetPrompt(this);
-                interactText.enabled = true;
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    interactable.Interact(this);
-                }
+                interactText.enabled = interactText.text != "";
 
                 return;
             }
         }
 
+        ClearInteraction();
+    }
+
+    // -------- INPUT --------
+    void HandleInput()
+    {
+        if (currentInteractable == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentInteractable.Interact(this);
+        }
+    }
+
+    // -------- RESET --------
+    void ClearInteraction()
+    {
+        currentInteractable = null;
         interactText.enabled = false;
     }
 }

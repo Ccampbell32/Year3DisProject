@@ -17,10 +17,6 @@ public class SimpleFPSController : MonoBehaviour
     public float bobSpeed = 6f;
     public float bobAmount = 0.05f;
 
-    [Header("Lean")]
-    public float leanAngle = 15f;
-    public float leanSpeed = 6f;
-
     public Transform cameraHolder;
 
     float xRotation = 0f;
@@ -29,8 +25,6 @@ public class SimpleFPSController : MonoBehaviour
 
     float defaultY;
     float bobTimer;
-
-    float currentLean;
 
     CharacterController controller;
 
@@ -48,7 +42,6 @@ public class SimpleFPSController : MonoBehaviour
         Look();
         Move();
         HeadBob();
-        Lean();
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Cursor.lockState = CursorLockMode.None;
@@ -64,7 +57,7 @@ public class SimpleFPSController : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, currentLean);
+        cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -117,23 +110,11 @@ public class SimpleFPSController : MonoBehaviour
         else
         {
             bobTimer = 0;
-            cameraHolder.localPosition = Vector3.Lerp(cameraHolder.localPosition,
-                new Vector3(0, defaultY, 0), Time.deltaTime * 5f);
+            cameraHolder.localPosition = Vector3.Lerp(
+                cameraHolder.localPosition,
+                new Vector3(0, defaultY, 0),
+                Time.deltaTime * 5f
+            );
         }
-    }
-
-    // ---------------- LEAN ----------------
-
-    void Lean()
-    {
-        float targetLean = 0;
-
-        if (Input.GetKey(KeyCode.Q))
-            targetLean = leanAngle;
-
-        if (Input.GetKey(KeyCode.E))
-            targetLean = -leanAngle;
-
-        currentLean = Mathf.Lerp(currentLean, targetLean, Time.deltaTime * leanSpeed);
     }
 }

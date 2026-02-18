@@ -2,42 +2,93 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public bool isTrash;
-    public bool isDumpster;
-    public bool isLight;
+    public enum InteractType
+    {
+        Trash,
+        Dumpster,
+        Light,
+        Mop,
+        Blood
+    }
 
+    [Header("Type")]
+    public InteractType interactType;
+
+    // ---------- PROMPT ----------
     public string GetPrompt(PlayerInteract player)
     {
-        if (isTrash && !player.holdingTrash)
-            return "Press E to Pick Up";
+        switch (interactType)
+        {
+            case InteractType.Trash:
+                if (!player.holdingTrash)
+                    return "Press E to Pick Up Trash";
+                break;
 
-        if (isDumpster && player.holdingTrash)
-            return "Press E to Dump Trash";
+            case InteractType.Dumpster:
+                if (player.holdingTrash)
+                    return "Press E to Dump Trash";
+                break;
 
-        if (isLight)
-            return "Press E to Toggle Light";
+            case InteractType.Light:
+                return "Press E to Toggle Light";
+
+            case InteractType.Mop:
+                if (!player.holdingMop)
+                    return "Press E to Pick Up Mop";
+                break;
+
+            case InteractType.Blood:
+                if (player.holdingMop)
+                    return "Press E to Mop Blood";
+                else
+                    return "You need a mop";
+        }
 
         return "";
     }
 
+    // ---------- INTERACT ----------
     public void Interact(PlayerInteract player)
     {
-        if (isTrash && !player.holdingTrash)
+        switch (interactType)
         {
-            player.holdingTrash = true;
-            gameObject.SetActive(false);
-        }
+            case InteractType.Trash:
+                if (!player.holdingTrash)
+                {
+                    player.holdingTrash = true;
+                    gameObject.SetActive(false);
+                }
+                break;
 
-        else if (isDumpster && player.holdingTrash)
-        {
-            player.holdingTrash = false;
-        }
+            case InteractType.Dumpster:
+                if (player.holdingTrash)
+                {
+                    player.holdingTrash = false;
+                    TaskManager.Instance.DumpedTrash();
+                }
+                break;
 
-        else if (isLight)
-        {
-            Light light = GetComponentInChildren<Light>();
-            if (light != null)
-                light.enabled = !light.enabled;
+            case InteractType.Light:
+                Light lightComp = GetComponentInChildren<Light>();
+                if (lightComp != null)
+                    lightComp.enabled = !lightComp.enabled;
+                break;
+
+            case InteractType.Mop:
+                if (!player.holdingMop)
+                {
+                    player.holdingMop = true;
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case InteractType.Blood:
+                if (player.holdingMop)
+                {
+                    TaskManager.Instance.CleanedBlood();
+                    Destroy(gameObject);
+                }
+                break;
         }
     }
 }

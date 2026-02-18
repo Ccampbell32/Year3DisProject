@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/BrianGrid/MainMenu.unity
     guid: cc66e2e2c36ce0b4c826c21b83fee5b2
   - enabled: 1
-    path: Assets/BrianGrid/Game.unity
+    path: Assets/BrianGrid/GameSceneName.unity
     guid: ca5e56dda3e13334d8c0ca2042714ab1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

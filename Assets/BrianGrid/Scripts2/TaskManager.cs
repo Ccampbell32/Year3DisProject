@@ -3,64 +3,60 @@ using TMPro;
 
 public class TaskManager : MonoBehaviour
 {
-    public TextMeshProUGUI task1;
-    public TextMeshProUGUI task2;
-    public TextMeshProUGUI task3;
+    public static TaskManager Instance;
 
-    public GameObject dumpsterBag1;
-    public GameObject dumpsterBag2;
+    [Header("UI")]
+    public TMP_Text objectiveText;
 
-    bool task1Done;
-    bool task2Done;
-    bool task3Done;
+    [Header("Tasks")]
+    public int bloodToClean = 5;
+    public int trashToDump = 3;
+
+    int bloodCleaned = 0;
+    int trashDumped = 0;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
-        dumpsterBag1.SetActive(false);
-        dumpsterBag2.SetActive(false);
+        UpdateUI();
     }
-    int bagsCollected = 0;
 
-    public void CollectBag()
+    // -------- BLOOD --------
+    public void CleanedBlood()
     {
-        bagsCollected++;
-
-        Debug.Log("Bag collected: " + bagsCollected);
+        bloodCleaned++;
+        UpdateUI();
+        CheckCompletion();
     }
-    public void DumpBags()
+
+    // -------- TRASH --------
+    public void DumpedTrash()
     {
-        if (bagsCollected < 2)
+        trashDumped++;
+        UpdateUI();
+        CheckCompletion();
+    }
+
+    // -------- UI UPDATE --------
+    void UpdateUI()
+    {
+        objectiveText.text =
+            "Tasks:\n" +
+            "Clean Blood: " + bloodCleaned + "/" + bloodToClean + "\n" +
+            "Dump Trash: " + trashDumped + "/" + trashToDump;
+    }
+
+    void CheckCompletion()
+    {
+        if (bloodCleaned >= bloodToClean &&
+            trashDumped >= trashToDump)
         {
-            Debug.Log("Need both bags first!");
-            return;
+            objectiveText.text = "All Tasks Complete...";
+            Debug.Log("ALL TASKS COMPLETE");
         }
-
-        CompleteTask1();
-    }
-
-
-    public void CompleteTask1()
-    {
-        if (task1Done) return;
-
-        task1Done = true;
-        task1.text = "<s>✔ Take black bags to bin</s>";
-
-        dumpsterBag1.SetActive(true);
-        dumpsterBag2.SetActive(true);
-    }
-
-    public void CompleteTask2()
-    {
-        if (task2Done) return;
-        task2Done = true;
-        task2.text = "<s>✔ Turn off lights</s>";
-    }
-
-    public void CompleteTask3()
-    {
-        if (task3Done) return;
-        task3Done = true;
-        task3.text = "<s>✔ Clear rubbish</s>";
     }
 }

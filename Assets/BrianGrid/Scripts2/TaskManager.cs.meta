@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: f97c664f7950cee4b8183c15bbd7ad67
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - objectiveText: {instanceID: 0}
+  - scp096: {instanceID: 0}
+  - scpAudioSource: {instanceID: 0}
+  - scpSpawnScream: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

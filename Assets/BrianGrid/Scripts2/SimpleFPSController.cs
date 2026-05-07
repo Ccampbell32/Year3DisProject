@@ -13,6 +13,10 @@ public class SimpleFPSController : MonoBehaviour
     public float maxSprintTime = 4f;
     public float sprintCooldown = 3f;
 
+    [Header("Physics")]
+    public float gravity = -15f; // Slightly stronger gravity feels better for games
+    public float jumpHeight = 1.5f;
+
     [Header("Head Bob")]
     public float bobSpeed = 6f;
     public float bobAmount = 0.05f;
@@ -25,6 +29,8 @@ public class SimpleFPSController : MonoBehaviour
 
     float defaultY;
     float bobTimer;
+    
+    Vector3 velocity;
 
     CharacterController controller;
 
@@ -93,7 +99,28 @@ public class SimpleFPSController : MonoBehaviour
         }
 
         Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
+        
+        // --- GRAVITY ---
+        // If we are touching the ground, reset gravity so it doesn't build up endlessly
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // A small negative number keeps us perfectly snapped to the floor, especially on downward slopes
+        }
+
+        // --- JUMP ---
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        {
+            // Physics equation for calculating jumping force
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        // Apply gravity over time
+        velocity.y += gravity * Time.deltaTime;
+
+        // Combine horizontal movement with vertical gravity
+        Vector3 finalMove = (move * speed) + (Vector3.up * velocity.y);
+        
+        controller.Move(finalMove * Time.deltaTime);
     }
 
     // ---------------- HEAD BOB ----------------

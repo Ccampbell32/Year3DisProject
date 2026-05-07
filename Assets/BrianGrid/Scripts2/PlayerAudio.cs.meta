@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ea7f3e616bd5acc408f40fc8c34c515c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - footstepSource: {instanceID: 0}
+  - heartbeatSource: {instanceID: 0}
+  - heartbeatSound: {fileID: 8300000, guid: d3612cabe45d00142a124b4b8d8866ab, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

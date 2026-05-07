@@ -9,8 +9,8 @@ public class RainIndoorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            rainFar.SetActive(false);
-            rainNear.SetActive(false);
+            if (rainFar != null) rainFar.SetActive(false);
+            if (rainNear != null) rainNear.SetActive(false);
         }
     }
 
@@ -18,8 +18,8 @@ public class RainIndoorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            rainFar.SetActive(true);
-            rainNear.SetActive(true);
+            if (rainFar != null) rainFar.SetActive(true);
+            if (rainNear != null) rainNear.SetActive(true);
         }
     }
 }

@@ -10,6 +10,16 @@ public class PlayerInteract : MonoBehaviour
     [Header("Player State")]
     [HideInInspector] public bool holdingTrash;
     [HideInInspector] public bool holdingMop;
+    [HideInInspector] public int bonesHeld = 0;
+    public int maxBones = 5;
+    [HideInInspector] public int photosToPlace = 4;
+    [HideInInspector] public int bloodToPlace = 1;
+
+    [Header("Mop System")]
+    public Transform holdPoint;
+    public GameObject mopPrefab;
+
+    GameObject currentMop;
 
     Camera cam;
     Interactable currentInteractable;
@@ -30,27 +40,41 @@ public class PlayerInteract : MonoBehaviour
     void CheckInteraction()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        RaycastHit hit;
+        
+        // Use a thick "SphereCastAll" (radius 0.5f). This ensures we can easily hit small or flat objects
+        // like photos even if they are resting perfectly flat against a wall or floor.
+        RaycastHit[] hits = Physics.SphereCastAll(ray, 0.5f, interactRange);
 
-        if (Physics.Raycast(ray, out hit, interactRange))
+        Interactable bestInteractable = null;
+        float closestDistance = float.MaxValue;
+        Collider bestCollider = null;
+
+        // Loop through everything the thick ray hit to find the closest interactable object
+        foreach (RaycastHit hit in hits)
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-
             if (interactable != null)
             {
-                currentInteractable = interactable;
-
-                Vector3 screenPos =
-                    cam.WorldToScreenPoint(hit.collider.bounds.center);
-
-                interactText.transform.position =
-                    screenPos + Vector3.up * 30f;
-
-                interactText.text = interactable.GetPrompt(this);
-                interactText.enabled = interactText.text != "";
-
-                return;
+                if (hit.distance < closestDistance)
+                {
+                    closestDistance = hit.distance;
+                    bestInteractable = interactable;
+                    bestCollider = hit.collider;
+                }
             }
+        }
+
+        if (bestInteractable != null)
+        {
+            currentInteractable = bestInteractable;
+
+            Vector3 screenPos = cam.WorldToScreenPoint(bestCollider.bounds.center);
+
+            interactText.transform.position = screenPos + Vector3.up * 30f;
+            interactText.text = bestInteractable.GetPrompt(this);
+            interactText.enabled = interactText.text != "";
+
+            return;
         }
 
         ClearInteraction();
@@ -66,6 +90,30 @@ public class PlayerInteract : MonoBehaviour
         {
             currentInteractable.Interact(this);
         }
+    }
+
+    // -------- PICKUP MOP --------
+    public void PickupMop()
+    {
+        if (holdingMop) return;
+
+        currentMop = Instantiate(mopPrefab, holdPoint.position, holdPoint.rotation);
+        currentMop.transform.SetParent(holdPoint);
+
+        holdingMop = true;
+    }
+
+    // -------- REMOVE MOP --------
+    public void RemoveMop()
+    {
+        if (!holdingMop) return;
+
+        if (currentMop != null)
+        {
+            Destroy(currentMop);
+        }
+
+        holdingMop = false;
     }
 
     // -------- RESET --------
